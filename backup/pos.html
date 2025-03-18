@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bean Counter ERP | Point of Sale</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Open+Sans:wght@300;400;600&family=Playfair+Display:wght@400;500&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="pos-styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i class="fa-solid fa-mug-hot"></i>
+                    <span>Bean Counter</span>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="index.html"><i class="fa-solid fa-house"></i><span>Dashboard</span></a>
+                    </li>
+                    <li class="active">
+                        <a href="pos.html"><i class="fa-solid fa-cash-register"></i><span>Point of Sale</span></a>
+                    </li>
+                    <li>
+                        <a href="inventory.html"><i class="fa-solid fa-box"></i><span>Inventory</span></a>
+                    </li>
+                    <li>
+                        <a href="staff.html"><i class="fa-solid fa-users"></i><span>Staff</span></a>
+                    </li>
+                    <li>
+                        <a href="customers.html"><i class="fa-solid fa-user"></i><span>Customers</span></a>
+                    </li>
+                    <li>
+                        <a href="reports.html"><i class="fa-solid fa-chart-simple"></i><span>Reports</span></a>
+                    </li>
+                    <li>
+                        <a href="recipes.html"><i class="fa-solid fa-utensils"></i><span>Recipes & Menu</span></a>
+                    </li>
+                    <li>
+                        <a href="finance.html"><i class="fa-solid fa-dollar-sign"></i><span>Finance</span></a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="main-header">
+                <div class="header-title">
+                    <h1><i class="fa-solid fa-cash-register"></i> Point of Sale</h1>
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn-secondary" id="orderHistory">
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+                        <span>Order History</span>
+                    </button>
+                    <div class="user-menu">
+                        <div class="notifications">
+                            <i class="fa-regular fa-bell"></i>
+                            <span class="badge">3</span>
+                        </div>
+                        <div class="user-info">
+                            <span>Barista</span>
+                            <img src="https://via.placeholder.com/36" alt="User Avatar">
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- POS Content -->
+            <div class="pos-container">
+                <!-- Product Selection Area -->
+                <div class="product-area">
+                    <!-- Categories -->
+                    <div class="categories">
+                        <button class="category-btn active" data-category="coffee">
+                            <i class="fa-solid fa-mug-hot"></i>
+                            <span>Coffee</span>
+                        </button>
+                        <button class="category-btn" data-category="tea">
+                            <i class="fa-solid fa-mug-saucer"></i>
+                            <span>Tea</span>
+                        </button>
+                        <button class="category-btn" data-category="cold-drinks">
+                            <i class="fa-solid fa-glass-water"></i>
+                            <span>Cold Drinks</span>
+                        </button>
+                        <button class="category-btn" data-category="pastries">
+                            <i class="fa-solid fa-bread-slice"></i>
+                            <span>Pastries</span>
+                        </button>
+                        <button class="category-btn" data-category="snacks">
+                            <i class="fa-solid fa-cookie"></i>
+                            <span>Snacks</span>
+                        </button>
+                    </div>
+
+                    <!-- Products Grid -->
+                    <div class="products-grid" id="coffeeProducts">
+                        <div class="product-card" data-id="1" data-name="Espresso" data-price="3.50">
+                            <div class="product-img">
+                                <img src="https://via.placeholder.com/80?text=Espresso" alt="Espresso">
+                            </div>
+                            <div class="product-info">
+                                <h3>Espresso</h3>
+                                <p class="price">$3.50</p>
+                            </div>
+                        </div>
+                        <div class="product-card" data-id="2" data-name="Americano" data-price="4.00">
+                            <div class="product-img">
+                                <img src="https://via.placeholder.com/80?text=Americano" alt="Americano">
+                            </div>
+                            <div class="product-info">
+                                <h3>Americano</h3>
+                                <p class="price">$4.00</p>
+                            </div>
+                        </div>
+                        <div class="product-card" data-id="3" data-name="Cappuccino" data-price="4.50">
+                            <div class="product-img">
+                                <img src="https://via.placeholder.com/80?text=Cappuccino" alt="Cappuccino">
+                            </div>
+                            <div class="product-info">
+                                <h3>Cappuccino</h3>
+                                <p class="price">$4.50</p>
+                            </div>
+                        </div>
+                        <div class="product-card" data-id="4" data-name="Latte" data-price="4.50">
+                            <div class="product-img">
+                                <img src="https://via.placeholder.com/80?text=Latte" alt="Latte">
+                            </div>
+                            <div class="product-info">
+                                <h3>Latte</h3>
+                                <p class="price">$4.50</p>
+                            </div>
+                        </div>
+                        <div class="product-card" data-id="5" data-name="Mocha" data-price="5.00">
+                            <div class="product-img">
+                                <img src="https://via.placeholder.com/80?text=Mocha" alt="Mocha">
+                            </div>
+                            <div class="product-info">
+                                <h3>Mocha</h3>
+                                <p class="price">$5.00</p>
+                            </div>
+                        </div>
+                        <div class="product-card" data-id="6" data-name="Macchiato" data-price="4.75">
+                            <div class="product-img">
+                                <img src="https://via.placeholder.com/80?text=Macchiato" alt="Macchiato">
+                            </div>
+                            <div class="product-info">
+                                <h3>Macchiato</h3>
+                                <p class="price">$4.75</p>
+                            </div>
+                        </div>
+                        <div class="product-card" data-id="7" data-name="Flat White" data-price="4.75">
+                            <div class="product-img">
+                                <img src="https://via.placeholder.com/80?text=Flat+White" alt="Flat White">
+                            </div>
+                            <div class="product-info">
+                                <h3>Flat White</h3>
+                                <p class="price">$4.75</p>
+                            </div>
+                        </div>
+                        <div class="product-card" data-id="8" data-name="Cold Brew" data-price="5.25">
+                            <div class="product-img">
+                                <img src="https://via.placeholder.com/80?text=Cold+Brew" alt="Cold Brew">
+                            </div>
+                            <div class="product-info">
+                                <h3>Cold Brew</h3>
+                                <p class="price">$5.25</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Order Area -->
+                <div class="order-area">
+                    <div class="order-header">
+                        <h2>Current Order <span class="order-number">#127</span></h2>
+                        <button class="btn-icon" id="clearOrder">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                    </div>
+
+                    <div class="order-items" id="orderItems">
+                        <!-- Order items will be added here dynamically -->
+                    </div>
+
+                    <div class="order-customization" id="itemCustomization">
+                        <h3>Customize Item</h3>
+                        <div class="customization-options">
+                            <div class="option-group">
+                                <label>Size</label>
+                                <div class="option-buttons">
+                                    <button class="option-btn" data-value="small">Small</button>
+                                    <button class="option-btn active" data-value="medium">Medium</button>
+                                    <button class="option-btn" data-value="large">Large</button>
+                                </div>
+                            </div>
+                            
+                            <div class="option-group">
+                                <label>Milk</label>
+                                <div class="option-buttons">
+                                    <button class="option-btn active" data-value="whole">Whole</button>
+                                    <button class="option-btn" data-value="skim">Skim</button>
+                                    <button class="option-btn" data-value="almond">Almond</button>
+                                    <button class="option-btn" data-value="oat">Oat</button>
+                                </div>
+                            </div>
+
+                            <div class="option-group">
+                                <label>Extras</label>
+                                <div class="option-buttons">
+                                    <button class="option-btn" data-value="extra-shot">Extra Shot</button>
+                                    <button class="option-btn" data-value="vanilla">Vanilla</button>
+                                    <button class="option-btn" data-value="caramel">Caramel</button>
+                                    <button class="option-btn" data-value="whipped-cream">Whipped Cream</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="customization-actions">
+                            <button class="btn btn-secondary" id="cancelCustomization">Cancel</button>
+                            <button class="btn btn-primary" id="applyCustomization">Apply</button>
+                        </div>
+                    </div>
+
+                    <div class="order-summary">
+                        <div class="summary-row">
+                            <span>Subtotal</span>
+                            <span id="subtotal">$0.00</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Tax (8%)</span>
+                            <span id="tax">$0.00</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span>Total</span>
+                            <span id="total">$0.00</span>
+                        </div>
+                    </div>
+
+                    <div class="customer-section">
+                        <button class="btn btn-secondary btn-block" id="addCustomer">
+                            <i class="fa-solid fa-user-plus"></i>
+                            <span>Add Customer</span>
+                        </button>
+                    </div>
+
+                    <div class="payment-options">
+                        <div class="payment-header">
+                            <h3>Payment</h3>
+                        </div>
+                        <div class="payment-methods">
+                            <button class="payment-btn" data-method="cash">
+                                <i class="fa-solid fa-money-bill"></i>
+                                <span>Cash</span>
+                            </button>
+                            <button class="payment-btn" data-method="card">
+                                <i class="fa-solid fa-credit-card"></i>
+                                <span>Card</span>
+                            </button>
+                            <button class="payment-btn" data-method="mobile">
+                                <i class="fa-solid fa-mobile-screen"></i>
+                                <span>Mobile</span>
+                            </button>
+                        </div>
+                        <button class="btn btn-primary btn-block" id="completeOrder" disabled>
+                            <i class="fa-solid fa-check"></i>
+                            <span>Complete Order</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal Components -->
+    <div class="modal-overlay" id="customerModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Add Customer</h3>
+                <button class="close-modal">
+                    <i class="fa-solid fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-content">
+                <div class="search-box">
+                    <input type="text" placeholder="Search customer...">
+                    <button class="btn-icon">
+                        <i class="fa-solid fa-search"></i>
+                    </button>
+                </div>
+                <div class="customer-list">
+                    <div class="customer-item">
+                        <div class="customer-avatar">
+                            <img src="https://via.placeholder.com/40" alt="Customer Avatar">
+                        </div>
+                        <div class="customer-info">
+                            <h4>Sarah Johnson</h4>
+                            <p>Regular - 120 points</p>
+                        </div>
+                    </div>
+                    <div class="customer-item">
+                        <div class="customer-avatar">
+                            <img src="https://via.placeholder.com/40" alt="Customer Avatar">
+                        </div>
+                        <div class="customer-info">
+                            <h4>Michael Chen</h4>
+                            <p>Regular - 85 points</p>
+                        </div>
+                    </div>
+                    <div class="customer-item">
+                        <div class="customer-avatar">
+                            <img src="https://via.placeholder.com/40" alt="Customer Avatar">
+                        </div>
+                        <div class="customer-info">
+                            <h4>Emily Rodriguez</h4>
+                            <p>New - 15 points</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="new-customer">
+                    <h4>New Customer?</h4>
+                    <button class="btn btn-secondary btn-block">
+                        <i class="fa-solid fa-user-plus"></i>
+                        <span>Register New Customer</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="pos-script.js"></script>
+</body>
+</html> 

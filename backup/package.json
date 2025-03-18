@@ -1,0 +1,33 @@
+{
+  "name": "bean-counter-erp",
+  "version": "1.0.0",
+  "description": "A comprehensive ERP system for small coffee shops",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [
+    "coffee",
+    "erp",
+    "pos",
+    "inventory",
+    "management"
+  ],
+  "author": "Bean Counter Team",
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/bean-counter-erp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/bean-counter-erp/issues"
+  },
+  "homepage": "https://github.com/yourusername/bean-counter-erp#readme"
+} 

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bean Counter ERP | Dashboard</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Open+Sans:wght@300;400;600&family=Playfair+Display:wght@400;500&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i class="fa-solid fa-mug-hot"></i>
+                    <span>Bean Counter</span>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="active">
+                        <a href="index.html"><i class="fa-solid fa-house"></i><span>Dashboard</span></a>
+                    </li>
+                    <li>
+                        <a href="pos.html"><i class="fa-solid fa-cash-register"></i><span>Point of Sale</span></a>
+                    </li>
+                    <li>
+                        <a href="inventory.html"><i class="fa-solid fa-box"></i><span>Inventory</span></a>
+                    </li>
+                    <li>
+                        <a href="staff.html"><i class="fa-solid fa-users"></i><span>Staff</span></a>
+                    </li>
+                    <li>
+                        <a href="customers.html"><i class="fa-solid fa-user"></i><span>Customers</span></a>
+                    </li>
+                    <li>
+                        <a href="reports.html"><i class="fa-solid fa-chart-simple"></i><span>Reports</span></a>
+                    </li>
+                    <li>
+                        <a href="recipes.html"><i class="fa-solid fa-utensils"></i><span>Recipes & Menu</span></a>
+                    </li>
+                    <li>
+                        <a href="finance.html"><i class="fa-solid fa-dollar-sign"></i><span>Finance</span></a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="main-header">
+                <div class="header-title">
+                    <h1><i class="fa-solid fa-chart-line"></i> Dashboard</h1>
+                </div>
+                <div class="header-actions">
+                    <div class="date-display">
+                        <i class="fa-regular fa-calendar"></i>
+                        <span>Today: May 15, 2023</span>
+                    </div>
+                    <div class="user-menu">
+                        <div class="notifications">
+                            <i class="fa-regular fa-bell"></i>
+                            <span class="badge">3</span>
+                        </div>
+                        <div class="user-info">
+                            <span>Admin</span>
+                            <img src="https://via.placeholder.com/36" alt="User Avatar">
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <div class="dashboard-content">
+                <!-- KPI Cards Row -->
+                <div class="kpi-cards">
+                    <div class="card kpi-card">
+                        <div class="card-content">
+                            <div class="kpi-header">
+                                <h3>Today's Sales</h3>
+                                <i class="fa-solid fa-dollar-sign kpi-icon"></i>
+                            </div>
+                            <div class="kpi-value">$1,245</div>
+                            <div class="kpi-comparison positive">
+                                <i class="fa-solid fa-arrow-up"></i>
+                                <span>12% from yesterday</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card kpi-card">
+                        <div class="card-content">
+                            <div class="kpi-header">
+                                <h3>Inventory Alerts</h3>
+                                <i class="fa-solid fa-triangle-exclamation kpi-icon"></i>
+                            </div>
+                            <div class="kpi-value">4 Items</div>
+                            <div class="kpi-detail">
+                                <span class="warning">3 items low</span>
+                                <span class="danger">1 item out</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card kpi-card">
+                        <div class="card-content">
+                            <div class="kpi-header">
+                                <h3>Staffing Today</h3>
+                                <i class="fa-solid fa-user-group kpi-icon"></i>
+                            </div>
+                            <div class="kpi-value">6 Employees</div>
+                            <div class="kpi-detail">
+                                <span>4 active now</span>
+                                <span>2 upcoming</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sales Overview Chart -->
+                <div class="card chart-card">
+                    <div class="card-header">
+                        <h3>Sales Overview</h3>
+                        <div class="card-actions">
+                            <select name="timeRange" id="timeRange">
+                                <option value="today">Today</option>
+                                <option value="week">This Week</option>
+                                <option value="month">This Month</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="card-content chart-container">
+                        <!-- This would contain a chart in a real application -->
+                        <div class="placeholder-chart">
+                            <div class="chart-bars">
+                                <div class="bar" style="height: 30%;"><span>8am</span></div>
+                                <div class="bar" style="height: 40%;"><span>9am</span></div>
+                                <div class="bar" style="height: 65%;"><span>10am</span></div>
+                                <div class="bar" style="height: 80%;"><span>11am</span></div>
+                                <div class="bar" style="height: 90%;"><span>12pm</span></div>
+                                <div class="bar" style="height: 70%;"><span>1pm</span></div>
+                                <div class="bar" style="height: 50%;"><span>2pm</span></div>
+                                <div class="bar" style="height: 60%;"><span>3pm</span></div>
+                            </div>
+                            <div class="chart-labels">
+                                <div>$0</div>
+                                <div>$50</div>
+                                <div>$100</div>
+                                <div>$150</div>
+                                <div>$200</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Cards Row -->
+                <div class="info-cards">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Top Items</h3>
+                            <div class="card-actions">
+                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <ul class="top-items-list">
+                                <li>
+                                    <div class="item-rank">1</div>
+                                    <div class="item-info">
+                                        <span class="item-name">Latte</span>
+                                        <span class="item-qty">43 sold</span>
+                                    </div>
+                                    <div class="item-sales">$172.00</div>
+                                </li>
+                                <li>
+                                    <div class="item-rank">2</div>
+                                    <div class="item-info">
+                                        <span class="item-name">Croissant</span>
+                                        <span class="item-qty">36 sold</span>
+                                    </div>
+                                    <div class="item-sales">$126.00</div>
+                                </li>
+                                <li>
+                                    <div class="item-rank">3</div>
+                                    <div class="item-info">
+                                        <span class="item-name">Cold Brew</span>
+                                        <span class="item-qty">28 sold</span>
+                                    </div>
+                                    <div class="item-sales">$112.00</div>
+                                </li>
+                                <li>
+                                    <div class="item-rank">4</div>
+                                    <div class="item-info">
+                                        <span class="item-name">Blueberry Muffin</span>
+                                        <span class="item-qty">22 sold</span>
+                                    </div>
+                                    <div class="item-sales">$88.00</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Recent Activities</h3>
+                            <div class="card-actions">
+                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <ul class="activity-list">
+                                <li>
+                                    <div class="activity-icon delivery">
+                                        <i class="fa-solid fa-truck"></i>
+                                    </div>
+                                    <div class="activity-details">
+                                        <span class="activity-title">Milk delivery received</span>
+                                        <span class="activity-time">10:15 AM</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="activity-icon employee">
+                                        <i class="fa-solid fa-user-clock"></i>
+                                    </div>
+                                    <div class="activity-details">
+                                        <span class="activity-title">Emily clocked in</span>
+                                        <span class="activity-time">8:32 AM</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="activity-icon order">
+                                        <i class="fa-solid fa-basket-shopping"></i>
+                                    </div>
+                                    <div class="activity-details">
+                                        <span class="activity-title">Ordered supplies</span>
+                                        <span class="activity-time">Yesterday, 5:45 PM</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="activity-icon alert">
+                                        <i class="fa-solid fa-exclamation"></i>
+                                    </div>
+                                    <div class="activity-details">
+                                        <span class="activity-title">Low coffee beans inventory</span>
+                                        <span class="activity-time">Yesterday, 3:20 PM</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions Bar -->
+                <div class="quick-actions">
+                    <h3>Quick Actions</h3>
+                    <div class="action-buttons">
+                        <button class="btn btn-primary"><i class="fa-solid fa-cash-register"></i> New Sale</button>
+                        <button class="btn btn-secondary"><i class="fa-solid fa-box"></i> Add Inventory</button>
+                        <button class="btn btn-secondary"><i class="fa-solid fa-chart-pie"></i> View Reports</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
