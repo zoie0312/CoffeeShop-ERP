@@ -7,6 +7,8 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { CacheProvider, EmotionCache } from '@emotion/react';
 import createEmotionCache from '../utils/createEmotionCache';
 import theme from '../styles/theme';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 
 // Client-side cache, shared for the whole session of the user in the browser
 const clientSideEmotionCache = createEmotionCache();
@@ -29,7 +31,9 @@ function MyApp({ Component, pageProps, emotionCache = clientSideEmotionCache }: 
         <ThemeProvider theme={theme}>
           {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
           <CssBaseline />
-          <Component {...pageProps} />
+          <LocalizationProvider dateAdapter={AdapterDateFns}>
+            <Component {...pageProps} />
+          </LocalizationProvider>
         </ThemeProvider>
       </AppProvider>
     </CacheProvider>

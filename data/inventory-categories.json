@@ -1,0 +1,47 @@
+[
+  {
+    "id": "CAT001",
+    "name": "Beans",
+    "description": "Coffee beans of different varieties and roasts"
+  },
+  {
+    "id": "CAT002",
+    "name": "Dairy",
+    "description": "Milk and other dairy products"
+  },
+  {
+    "id": "CAT003",
+    "name": "Dairy Alternatives",
+    "description": "Non-dairy milk alternatives"
+  },
+  {
+    "id": "CAT004",
+    "name": "Syrups",
+    "description": "Flavor syrups for drinks"
+  },
+  {
+    "id": "CAT005",
+    "name": "Packaging",
+    "description": "Cups, lids, sleeves, and other packaging materials"
+  },
+  {
+    "id": "CAT006",
+    "name": "Condiments",
+    "description": "Sugar, sweeteners, and other condiments"
+  },
+  {
+    "id": "CAT007",
+    "name": "Ingredients",
+    "description": "Miscellaneous ingredients for food and drink preparation"
+  },
+  {
+    "id": "CAT008",
+    "name": "Cleaning",
+    "description": "Cleaning supplies and materials"
+  },
+  {
+    "id": "CAT009",
+    "name": "Equipment",
+    "description": "Coffee making equipment and parts"
+  }
+] 

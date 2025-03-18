@@ -71,6 +71,52 @@ export interface Customer {
   status: 'new' | 'regular' | 'vip';
 }
 
+// Inventory related types
+export interface InventoryItem {
+  id: string;
+  name: string;
+  category: string;
+  unit: string;
+  currentStock: number;
+  reorderPoint: number;
+  idealStock: number;
+  costPerUnit: number;
+  supplier: string;
+  location: string;
+  lastRestocked: string;
+  expiryDate: string | null;
+}
+
+export interface Supplier {
+  id: string;
+  name: string;
+  contactPerson: string;
+  email: string;
+  phone: string;
+  address: string;
+  notes: string;
+  preferredPaymentTerms: string;
+}
+
+export interface InventoryTransaction {
+  id: string;
+  inventoryId: string;
+  date: string;
+  type: 'restock' | 'usage' | 'adjustment' | 'write-off';
+  quantity: number;
+  unitCost: number;
+  totalCost: number;
+  supplierRef?: string;
+  invoiceNumber?: string;
+  notes?: string;
+}
+
+export interface InventoryCategory {
+  id: string;
+  name: string;
+  description: string;
+}
+
 // UI related types
 export interface KpiCardProps {
   title: string;

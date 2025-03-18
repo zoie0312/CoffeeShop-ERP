@@ -1,0 +1,108 @@
+[
+  {
+    "id": "TRX001",
+    "inventoryId": "INV001",
+    "date": "2023-03-10",
+    "type": "restock",
+    "quantity": 15,
+    "unitCost": 18.99,
+    "totalCost": 284.85,
+    "supplierRef": "SUP001",
+    "invoiceNumber": "INV-2023-0310",
+    "notes": "Regular scheduled restock"
+  },
+  {
+    "id": "TRX002",
+    "inventoryId": "INV003",
+    "date": "2023-03-17",
+    "type": "restock",
+    "quantity": 30,
+    "unitCost": 2.75,
+    "totalCost": 82.50,
+    "supplierRef": "SUP002",
+    "invoiceNumber": "LD-87654",
+    "notes": "Regular milk delivery"
+  },
+  {
+    "id": "TRX003",
+    "inventoryId": "INV004",
+    "date": "2023-03-15",
+    "type": "restock",
+    "quantity": 12,
+    "unitCost": 3.50,
+    "totalCost": 42.00,
+    "supplierRef": "SUP003",
+    "invoiceNumber": "HF-12345",
+    "notes": "Almond milk weekly delivery"
+  },
+  {
+    "id": "TRX004",
+    "inventoryId": "INV001",
+    "date": "2023-03-12",
+    "type": "usage",
+    "quantity": -1.2,
+    "unitCost": 18.99,
+    "totalCost": -22.79,
+    "notes": "Daily usage"
+  },
+  {
+    "id": "TRX005",
+    "inventoryId": "INV001",
+    "date": "2023-03-13",
+    "type": "usage",
+    "quantity": -0.8,
+    "unitCost": 18.99,
+    "totalCost": -15.19,
+    "notes": "Daily usage"
+  },
+  {
+    "id": "TRX006",
+    "inventoryId": "INV003",
+    "date": "2023-03-18",
+    "type": "usage",
+    "quantity": -4,
+    "unitCost": 2.75,
+    "totalCost": -11.00,
+    "notes": "Daily milk usage"
+  },
+  {
+    "id": "TRX007",
+    "inventoryId": "INV006",
+    "date": "2023-03-17",
+    "type": "usage",
+    "quantity": -1,
+    "unitCost": 6.25,
+    "totalCost": -6.25,
+    "notes": "Removed from stock - low on caramel syrup"
+  },
+  {
+    "id": "TRX008",
+    "inventoryId": "INV012",
+    "date": "2023-03-14",
+    "type": "adjustment",
+    "quantity": -0.3,
+    "unitCost": 12.75,
+    "totalCost": -3.83,
+    "notes": "Spill, had to be discarded"
+  },
+  {
+    "id": "TRX009",
+    "inventoryId": "INV007",
+    "date": "2023-03-16",
+    "type": "usage",
+    "quantity": -25,
+    "unitCost": 0.10,
+    "totalCost": -2.50,
+    "notes": "Daily usage of small cups"
+  },
+  {
+    "id": "TRX010",
+    "inventoryId": "INV008",
+    "date": "2023-03-16",
+    "type": "usage",
+    "quantity": -32,
+    "unitCost": 0.15,
+    "totalCost": -4.80,
+    "notes": "Daily usage of medium cups"
+  }
+] 

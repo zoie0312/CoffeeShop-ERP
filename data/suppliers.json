@@ -1,0 +1,72 @@
+[
+  {
+    "id": "SUP001",
+    "name": "Quality Coffee Suppliers",
+    "contactPerson": "John Smith",
+    "email": "john@qualitycoffee.com",
+    "phone": "(555) 123-4567",
+    "address": "123 Coffee Lane, Bean City, BC 10101",
+    "notes": "Primary coffee bean supplier. Orders must be placed 7 days in advance.",
+    "preferredPaymentTerms": "Net 30"
+  },
+  {
+    "id": "SUP002",
+    "name": "Local Dairy Co.",
+    "contactPerson": "Mary Johnson",
+    "email": "orders@localdairy.com",
+    "phone": "(555) 234-5678",
+    "address": "456 Milk Road, Dairy Town, DT 20202",
+    "notes": "Delivers 3 times per week: Monday, Wednesday, Friday",
+    "preferredPaymentTerms": "Net 15"
+  },
+  {
+    "id": "SUP003",
+    "name": "Health Foods Inc.",
+    "contactPerson": "Sam Green",
+    "email": "sales@healthfoods.com",
+    "phone": "(555) 345-6789",
+    "address": "789 Organic Way, Health Heights, HH 30303",
+    "notes": "Specializes in organic and alternative milk products",
+    "preferredPaymentTerms": "Net 30"
+  },
+  {
+    "id": "SUP004",
+    "name": "Flavor Solutions",
+    "contactPerson": "Jaime Wong",
+    "email": "jaime@flavorsolutions.com",
+    "phone": "(555) 456-7890",
+    "address": "101 Taste Blvd, Flavor Falls, FF 40404",
+    "notes": "Bulk discounts available for orders over $200",
+    "preferredPaymentTerms": "Net 45"
+  },
+  {
+    "id": "SUP005",
+    "name": "Eco Packaging Co.",
+    "contactPerson": "Taylor Rivera",
+    "email": "sales@ecopackaging.com",
+    "phone": "(555) 567-8901",
+    "address": "202 Green Street, Eco Springs, ES 50505",
+    "notes": "Sustainable packaging solutions. Minimum order quantity applies.",
+    "preferredPaymentTerms": "Net 30"
+  },
+  {
+    "id": "SUP006",
+    "name": "Sweet Supplies",
+    "contactPerson": "Alex Chen",
+    "email": "orders@sweetsupplies.com",
+    "phone": "(555) 678-9012",
+    "address": "303 Sugar Lane, Sweet City, SC 60606",
+    "notes": "Condiments and sweeteners supplier",
+    "preferredPaymentTerms": "Net 15"
+  },
+  {
+    "id": "SUP007",
+    "name": "Baking Essentials",
+    "contactPerson": "Pat Wilson",
+    "email": "wholesale@bakingessentials.com",
+    "phone": "(555) 789-0123",
+    "address": "404 Baker Street, Bakerton, BT 70707",
+    "notes": "Specialty baking ingredients and powders",
+    "preferredPaymentTerms": "Net 30"
+  }
+] 
