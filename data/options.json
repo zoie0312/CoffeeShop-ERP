@@ -1,0 +1,10 @@
+{
+  "sizes": ["Small", "Regular", "Large"],
+  "milkTypes": ["Whole", "Skim", "Almond", "Oat", "Soy"],
+  "extras": ["Extra Shot", "Vanilla Syrup", "Caramel Syrup", "Whipped Cream"],
+  "defaults": {
+    "size": "Regular",
+    "milk": "Whole",
+    "extras": []
+  }
+} 

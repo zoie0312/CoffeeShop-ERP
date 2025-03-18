@@ -19,6 +19,17 @@ export interface Product {
   };
 }
 
+export interface CartItem {
+  product: Product;
+  quantity: number;
+  total: number;
+  options?: {
+    size: string;
+    milk: string;
+    extras: string[];
+  };
+}
+
 // Order related types
 export interface OrderItem {
   id: string;

@@ -1,0 +1,58 @@
+[
+  {
+    "id": "1",
+    "name": "Espresso",
+    "price": 3.50,
+    "category": "Coffee",
+    "image": "/images/espresso.jpg"
+  },
+  {
+    "id": "2",
+    "name": "Cappuccino",
+    "price": 4.50,
+    "category": "Coffee",
+    "image": "/images/cappuccino.jpg"
+  },
+  {
+    "id": "3",
+    "name": "Latte",
+    "price": 4.00,
+    "category": "Coffee",
+    "image": "/images/latte.jpg"
+  },
+  {
+    "id": "4",
+    "name": "Americano",
+    "price": 3.00,
+    "category": "Coffee",
+    "image": "/images/americano.jpg"
+  },
+  {
+    "id": "5",
+    "name": "Mocha",
+    "price": 4.75,
+    "category": "Coffee",
+    "image": "/images/mocha.jpg"
+  },
+  {
+    "id": "6",
+    "name": "Croissant",
+    "price": 3.25,
+    "category": "Food",
+    "image": "/images/croissant.jpg"
+  },
+  {
+    "id": "7",
+    "name": "Blueberry Muffin",
+    "price": 3.50,
+    "category": "Food",
+    "image": "/images/muffin.jpg"
+  },
+  {
+    "id": "8",
+    "name": "Chocolate Chip Cookie",
+    "price": 2.50,
+    "category": "Food",
+    "image": "/images/cookie.jpg"
+  }
+] 
