@@ -2,7 +2,7 @@ import '../styles/globals.css';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { AppProvider } from '../context/AppContext';
-import { ThemeProvider } from '@mui/material/styles';
+import { ThemeProvider, THEME_ID } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { CacheProvider, EmotionCache } from '@emotion/react';
 import createEmotionCache from '../utils/createEmotionCache';
@@ -18,6 +18,7 @@ interface MyAppProps extends AppProps {
 }
 
 function MyApp({ Component, pageProps, emotionCache = clientSideEmotionCache }: MyAppProps) {
+
   return (
     <CacheProvider value={emotionCache}>
       <AppProvider>
@@ -26,7 +27,6 @@ function MyApp({ Component, pageProps, emotionCache = clientSideEmotionCache }: 
           <title>Bean Counter - Coffee Shop ERP</title>
           <meta name="description" content="A comprehensive ERP system for coffee shops" />
           <link rel="icon" href="/favicon.ico" />
-          <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
         </Head>
         <ThemeProvider theme={theme}>
           {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}

@@ -1,5 +1,5 @@
 import React from 'react';
-import Document, { Html, Head, Main, NextScript } from 'next/document';
+import Document, { Html, Head, Main, NextScript, DocumentContext } from 'next/document';
 import createEmotionServer from '@emotion/server/create-instance';
 import theme from '../styles/theme';
 import createEmotionCache from '../utils/createEmotionCache';
@@ -10,7 +10,7 @@ export default class MyDocument extends Document {
       <Html lang="en">
         <Head>
           {/* PWA primary color */}
-          <meta name="theme-color" content={theme.palette.primary.main} />
+          <meta name="theme-color" content={(theme as any).colorSchemes?.light?.palette?.primary?.main || '#8B4513'} />
           <link rel="shortcut icon" href="/favicon.ico" />
           <link
             rel="stylesheet"
@@ -30,7 +30,7 @@ export default class MyDocument extends Document {
 
 // `getInitialProps` belongs to `_document` (instead of `_app`),
 // it's compatible with static-site generation (SSG).
-MyDocument.getInitialProps = async (ctx) => {
+MyDocument.getInitialProps = async (ctx: DocumentContext) => {
   // Resolution order
   //
   // On the server:
@@ -85,4 +85,4 @@ MyDocument.getInitialProps = async (ctx) => {
     ...initialProps,
     emotionStyleTags,
   };
-}; 
+};

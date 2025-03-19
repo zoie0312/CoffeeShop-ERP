@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Head from 'next/head';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { LayoutProps } from '../types';
 import {
@@ -87,8 +88,9 @@ const Layout: React.FC<LayoutProps> = ({ children, title }) => {
           <ListItem key={item.text} disablePadding>
             <ListItemButton
               selected={router.pathname === item.path}
+              component={Link} 
+              href={item.path}
               onClick={() => {
-                router.push(item.path, undefined, { shallow: false });
                 if (isMobile) setMobileOpen(false);
               }}
               sx={{
