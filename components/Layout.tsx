@@ -88,7 +88,7 @@ const Layout: React.FC<LayoutProps> = ({ children, title }) => {
             <ListItemButton
               selected={router.pathname === item.path}
               onClick={() => {
-                router.push(item.path);
+                router.push(item.path, undefined, { shallow: false });
                 if (isMobile) setMobileOpen(false);
               }}
               sx={{

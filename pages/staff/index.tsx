@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import Layout from '@/components/Layout';
@@ -73,6 +73,13 @@ const StaffPage: React.FC = () => {
   const [staffFormOpen, setStaffFormOpen] = useState(false);
   const [shiftFormOpen, setShiftFormOpen] = useState(false);
   const [editingStaff, setEditingStaff] = useState<Staff | undefined>(undefined);
+  
+  // Load data on router changes
+  useEffect(() => {
+    // Refresh data when router changes
+    setStaff(staffData as Staff[]);
+    setShifts(shiftsData as Shift[]);
+  }, [router.asPath]);
   
   // Filter staff based on active tab and search term
   const filteredStaff = useMemo(() => {

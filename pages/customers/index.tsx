@@ -64,6 +64,11 @@ const CustomersPage = () => {
 
   // Load initial data
   useEffect(() => {
+    // Load the data
+    setCustomers(customersData as Customer[]);
+    setTransactions(customerTransactionsData as CustomerTransaction[]);
+    setFeedback(customerFeedbackData as CustomerFeedback[]);
+    
     // Set selected tab based on URL query param if present
     if (tab) {
       const tabMap: Record<string, number> = {
@@ -77,7 +82,7 @@ const CustomersPage = () => {
         setTabValue(newTabValue);
       }
     }
-  }, [tab]);
+  }, [tab, router.asPath]);
 
   // Update URL when tab changes
   const handleTabChange = (_: React.SyntheticEvent, newValue: number) => {

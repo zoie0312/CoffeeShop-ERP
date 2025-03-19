@@ -107,7 +107,7 @@ const CustomerDetail = () => {
     } finally {
       setLoading(false);
     }
-  }, [id]);
+  }, [id, router.asPath]);
 
   // Handle tab change
   const handleTabChange = (_: React.SyntheticEvent, newValue: number) => {

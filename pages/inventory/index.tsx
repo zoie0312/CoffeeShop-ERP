@@ -1,5 +1,6 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import Layout from '@/components/Layout';
 import InventoryTransactions from '@/components/inventory/InventoryTransactions';
 import InventoryItemForm from '@/components/inventory/InventoryItemForm';
@@ -53,6 +54,7 @@ import { useTheme } from '@mui/material/styles';
 
 const InventoryPage: React.FC = () => {
   const theme = useTheme();
+  const router = useRouter();
 
   // State for inventory items and filters
   const [inventory, setInventory] = useState<InventoryItem[]>(inventoryData as InventoryItem[]);
@@ -72,6 +74,13 @@ const InventoryPage: React.FC = () => {
   const [transactionFormOpen, setTransactionFormOpen] = useState(false);
   const [editingItem, setEditingItem] = useState<InventoryItem | undefined>(undefined);
   const [editingTransaction, setEditingTransaction] = useState<InventoryTransaction | undefined>(undefined);
+
+  // Load data on router changes
+  useEffect(() => {
+    // Refresh data when router changes
+    setInventory(inventoryData as InventoryItem[]);
+    setTransactions(transactionsData as InventoryTransaction[]);
+  }, [router.asPath]);
 
   // Filter inventory based on active tab and search term
   const filteredInventory = useMemo(() => {
