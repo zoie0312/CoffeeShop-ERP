@@ -1,0 +1,68 @@
+[
+  {
+    "id": "perf-001",
+    "staffId": "staff-001",
+    "reviewDate": "2022-06-15",
+    "reviewerId": "external-001",
+    "rating": 5,
+    "strengths": "Excellent leadership skills, proactive problem-solving, strong team building.",
+    "areasForImprovement": "Could delegate more tasks to develop team members.",
+    "goals": "Implement new inventory tracking system, mentor junior staff members.",
+    "notes": "John continues to be an exceptional manager."
+  },
+  {
+    "id": "perf-002",
+    "staffId": "staff-001",
+    "reviewDate": "2021-12-15",
+    "reviewerId": "external-001",
+    "rating": 4,
+    "strengths": "Strong organizational skills, good communication with staff.",
+    "areasForImprovement": "Spend more time on floor during peak hours.",
+    "goals": "Improve staff retention, reduce inventory waste by 10%.",
+    "notes": "Good overall performance with room for growth."
+  },
+  {
+    "id": "perf-003",
+    "staffId": "staff-002",
+    "reviewDate": "2022-07-10",
+    "reviewerId": "staff-001",
+    "rating": 5,
+    "strengths": "Excellent customer service, high quality of beverages, latte art expertise.",
+    "areasForImprovement": "Could improve speed during peak hours.",
+    "goals": "Train in advanced coffee techniques, mentor new baristas.",
+    "notes": "Emma is one of our most valued baristas."
+  },
+  {
+    "id": "perf-004",
+    "staffId": "staff-003",
+    "reviewDate": "2022-06-22",
+    "reviewerId": "staff-001",
+    "rating": 4,
+    "strengths": "Creative menu development, consistent quality, excellent special pastries.",
+    "areasForImprovement": "Better coordination with front-of-house staff during busy periods.",
+    "goals": "Develop new seasonal menu items, reduce pastry waste by 15%.",
+    "notes": "David continues to be a strong asset to our kitchen."
+  },
+  {
+    "id": "perf-005",
+    "staffId": "staff-004",
+    "reviewDate": "2022-10-05",
+    "reviewerId": "staff-001",
+    "rating": 4,
+    "strengths": "Good leadership of shift team, efficient operations, conflict resolution.",
+    "areasForImprovement": "Could improve inventory management knowledge.",
+    "goals": "Complete management training modules, improve team productivity metrics.",
+    "notes": "Sophia has shown good progress as a supervisor."
+  },
+  {
+    "id": "perf-006",
+    "staffId": "staff-005",
+    "reviewDate": "2023-01-15",
+    "reviewerId": "staff-001",
+    "rating": 3,
+    "strengths": "Friendly with customers, reliable attendance, quick learner.",
+    "areasForImprovement": "Needs to improve speed and accuracy during busy periods.",
+    "goals": "Complete advanced barista training, improve customer service metrics.",
+    "notes": "Michael shows promise but needs more experience."
+  }
+] 

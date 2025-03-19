@@ -1,0 +1,134 @@
+[
+  {
+    "id": "trans-001",
+    "customerId": "cust-001",
+    "date": "2023-02-15T08:30:00",
+    "orderId": "order-1234",
+    "amount": 7.50,
+    "pointsEarned": 8,
+    "pointsRedeemed": 0,
+    "type": "purchase",
+    "notes": "Morning cappuccino and muffin"
+  },
+  {
+    "id": "trans-002",
+    "customerId": "cust-002",
+    "date": "2023-02-15T10:15:00",
+    "orderId": "order-1235",
+    "amount": 12.75,
+    "pointsEarned": 13,
+    "pointsRedeemed": 0,
+    "type": "purchase",
+    "notes": "Cold brew and avocado toast"
+  },
+  {
+    "id": "trans-003",
+    "customerId": "cust-001",
+    "date": "2023-02-16T08:25:00",
+    "orderId": "order-1242",
+    "amount": 5.25,
+    "pointsEarned": 5,
+    "pointsRedeemed": 0,
+    "type": "purchase",
+    "notes": "Cappuccino only"
+  },
+  {
+    "id": "trans-004",
+    "customerId": "cust-003",
+    "date": "2023-02-16T14:10:00",
+    "orderId": "order-1244",
+    "amount": 9.50,
+    "pointsEarned": 10,
+    "pointsRedeemed": 0,
+    "type": "purchase",
+    "notes": "Chai latte and chocolate croissant"
+  },
+  {
+    "id": "trans-005",
+    "customerId": "cust-005",
+    "date": "2023-02-16T11:05:00",
+    "orderId": "order-1243",
+    "amount": 3.75,
+    "pointsEarned": 4,
+    "pointsRedeemed": 0,
+    "type": "purchase",
+    "notes": "Americano"
+  },
+  {
+    "id": "trans-006",
+    "customerId": "cust-004",
+    "date": "2023-02-17T16:45:00",
+    "orderId": "order-1255",
+    "amount": 6.50,
+    "pointsEarned": 7,
+    "pointsRedeemed": 0,
+    "type": "purchase",
+    "notes": "Latte and cookie"
+  },
+  {
+    "id": "trans-007",
+    "customerId": "cust-002",
+    "date": "2023-02-17T09:30:00",
+    "orderId": "order-1250",
+    "amount": 0,
+    "pointsEarned": 0,
+    "pointsRedeemed": 100,
+    "type": "points_redemption",
+    "notes": "Free coffee with points"
+  },
+  {
+    "id": "trans-008",
+    "customerId": "cust-005",
+    "date": "2023-02-17T12:20:00",
+    "orderId": "order-1252",
+    "amount": 13.25,
+    "pointsEarned": 13,
+    "pointsRedeemed": 0,
+    "type": "purchase",
+    "notes": "Americano and quiche"
+  },
+  {
+    "id": "trans-009",
+    "customerId": "cust-001",
+    "date": "2023-02-18T08:35:00",
+    "orderId": "order-1260",
+    "amount": 7.50,
+    "pointsEarned": 8,
+    "pointsRedeemed": 0,
+    "type": "purchase",
+    "notes": "Cappuccino and muffin"
+  },
+  {
+    "id": "trans-010",
+    "customerId": "cust-003",
+    "date": "2023-02-18T09:45:00",
+    "orderId": "order-1261",
+    "amount": -9.50,
+    "pointsEarned": 0,
+    "pointsRedeemed": 0,
+    "type": "refund",
+    "notes": "Wrong order provided"
+  },
+  {
+    "id": "trans-011",
+    "customerId": "cust-003",
+    "date": "2023-02-18T09:50:00",
+    "orderId": "order-1262",
+    "amount": 9.50,
+    "pointsEarned": 10,
+    "pointsRedeemed": 0,
+    "type": "purchase",
+    "notes": "Correct order replacement"
+  },
+  {
+    "id": "trans-012",
+    "customerId": "cust-005",
+    "date": "2023-02-18T11:15:00",
+    "orderId": "null",
+    "amount": 0,
+    "pointsEarned": 50,
+    "pointsRedeemed": 0,
+    "type": "points_adjustment",
+    "notes": "Birthday bonus points"
+  }
+] 

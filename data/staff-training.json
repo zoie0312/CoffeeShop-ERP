@@ -1,0 +1,135 @@
+[
+  {
+    "id": "training-001",
+    "staffId": "staff-001",
+    "trainingName": "Management Leadership Program",
+    "completionDate": "2022-01-15",
+    "expiryDate": "2024-01-15",
+    "certificateNumber": "MLP-2022-1234",
+    "status": "completed",
+    "notes": "Passed with distinction"
+  },
+  {
+    "id": "training-002",
+    "staffId": "staff-001",
+    "trainingName": "Food Safety Certification",
+    "completionDate": "2022-06-10",
+    "expiryDate": "2024-06-10",
+    "certificateNumber": "FSC-2022-5678",
+    "status": "completed",
+    "notes": "Required renewal in 2024"
+  },
+  {
+    "id": "training-003",
+    "staffId": "staff-002",
+    "trainingName": "Barista Fundamentals",
+    "completionDate": "2022-02-20",
+    "status": "completed",
+    "notes": "Excellent practical skills demonstrated"
+  },
+  {
+    "id": "training-004",
+    "staffId": "staff-002",
+    "trainingName": "Latte Art Masterclass",
+    "completionDate": "2022-05-15",
+    "certificateNumber": "LAM-2022-9101",
+    "status": "completed",
+    "notes": "Specialized in leaf and heart designs"
+  },
+  {
+    "id": "training-005",
+    "staffId": "staff-002",
+    "trainingName": "Food Safety Certification",
+    "completionDate": "2022-03-01",
+    "expiryDate": "2024-03-01",
+    "certificateNumber": "FSC-2022-1122",
+    "status": "completed",
+    "notes": ""
+  },
+  {
+    "id": "training-006",
+    "staffId": "staff-003",
+    "trainingName": "Advanced Pastry Techniques",
+    "completionDate": "2021-08-15",
+    "certificateNumber": "APT-2021-3344",
+    "status": "completed",
+    "notes": "Specialization in French pastries"
+  },
+  {
+    "id": "training-007",
+    "staffId": "staff-003",
+    "trainingName": "Food Safety Certification",
+    "completionDate": "2021-07-10",
+    "expiryDate": "2023-07-10",
+    "certificateNumber": "FSC-2021-5566",
+    "status": "expired",
+    "notes": "Needs renewal"
+  },
+  {
+    "id": "training-008",
+    "staffId": "staff-003",
+    "trainingName": "Gluten-Free Baking Workshop",
+    "completionDate": "2022-11-05",
+    "status": "completed",
+    "notes": "Can now produce full range of gluten-free items"
+  },
+  {
+    "id": "training-009",
+    "staffId": "staff-004",
+    "trainingName": "Shift Supervisor Training",
+    "completionDate": "2022-05-20",
+    "status": "completed",
+    "notes": "Completed with positive feedback"
+  },
+  {
+    "id": "training-010",
+    "staffId": "staff-004",
+    "trainingName": "Conflict Resolution Workshop",
+    "completionDate": "2022-07-15",
+    "status": "completed",
+    "notes": "Excellent people skills demonstrated"
+  },
+  {
+    "id": "training-011",
+    "staffId": "staff-004",
+    "trainingName": "Food Safety Certification",
+    "completionDate": "2022-04-28",
+    "expiryDate": "2024-04-28",
+    "certificateNumber": "FSC-2022-7788",
+    "status": "completed",
+    "notes": ""
+  },
+  {
+    "id": "training-012",
+    "staffId": "staff-005",
+    "trainingName": "Barista Fundamentals",
+    "completionDate": "2022-10-05",
+    "status": "completed",
+    "notes": "Quick learner"
+  },
+  {
+    "id": "training-013",
+    "staffId": "staff-005",
+    "trainingName": "Customer Service Excellence",
+    "completionDate": "2022-11-15",
+    "status": "completed",
+    "notes": "Very good at managing difficult customers"
+  },
+  {
+    "id": "training-014",
+    "staffId": "staff-005",
+    "trainingName": "Food Safety Certification",
+    "completionDate": "2022-10-10",
+    "expiryDate": "2024-10-10",
+    "certificateNumber": "FSC-2022-9900",
+    "status": "completed",
+    "notes": ""
+  },
+  {
+    "id": "training-015",
+    "staffId": "staff-003",
+    "trainingName": "Food Safety Recertification",
+    "status": "pending",
+    "notes": "Scheduled for next month"
+  }
+] 

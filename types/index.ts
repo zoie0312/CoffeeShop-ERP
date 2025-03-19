@@ -64,11 +64,45 @@ export interface Order {
 // Customer related types
 export interface Customer {
   id: string;
-  name: string;
+  firstName: string;
+  lastName: string;
   email?: string;
   phone?: string;
+  address?: string;
+  birthdate?: string;
+  joinDate: string;
   points: number;
+  totalSpent: number;
   status: 'new' | 'regular' | 'vip';
+  notes?: string;
+  preferences?: {
+    favoriteProducts?: string[];
+    milkPreference?: string;
+    sugarPreference?: string;
+  };
+}
+
+export interface CustomerTransaction {
+  id: string;
+  customerId: string;
+  date: string;
+  orderId: string;
+  amount: number;
+  pointsEarned: number;
+  pointsRedeemed: number;
+  type: 'purchase' | 'refund' | 'points_redemption' | 'points_adjustment';
+  notes?: string;
+}
+
+export interface CustomerFeedback {
+  id: string;
+  customerId: string;
+  date: string;
+  rating: 1 | 2 | 3 | 4 | 5;
+  comment?: string;
+  resolved: boolean;
+  response?: string;
+  category?: 'service' | 'product' | 'ambiance' | 'price' | 'other';
 }
 
 // Inventory related types
@@ -135,4 +169,67 @@ export interface KpiCardProps {
 export interface LayoutProps {
   children: ReactNode;
   title?: string;
+}
+
+// Staff Management related types
+export interface Staff {
+  id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  position: string;
+  department: string;
+  hireDate: string;
+  status: 'active' | 'on-leave' | 'terminated';
+  address: string;
+  emergencyContact: {
+    name: string;
+    relationship: string;
+    phone: string;
+  };
+  bankDetails: {
+    accountName: string;
+    accountNumber: string;
+    bankName: string;
+  };
+  hourlyRate?: number;
+  salary?: number;
+  paymentFrequency?: 'weekly' | 'bi-weekly' | 'monthly';
+  notes?: string;
+}
+
+export interface Shift {
+  id: string;
+  staffId: string;
+  date: string;
+  startTime: string;
+  endTime: string;
+  position: string;
+  status: 'scheduled' | 'completed' | 'missed' | 'sick-leave' | 'vacation';
+  hoursWorked?: number;
+  notes?: string;
+}
+
+export interface StaffTraining {
+  id: string;
+  staffId: string;
+  trainingName: string;
+  completionDate: string;
+  expiryDate?: string;
+  certificateNumber?: string;
+  status: 'completed' | 'pending' | 'expired';
+  notes?: string;
+}
+
+export interface Performance {
+  id: string;
+  staffId: string;
+  reviewDate: string;
+  reviewerId: string;
+  rating: 1 | 2 | 3 | 4 | 5;
+  strengths: string;
+  areasForImprovement: string;
+  goals: string;
+  notes?: string;
 } 

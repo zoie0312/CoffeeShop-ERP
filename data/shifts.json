@@ -1,0 +1,126 @@
+[
+  {
+    "id": "shift-001",
+    "staffId": "staff-001",
+    "date": "2023-03-15",
+    "startTime": "07:00",
+    "endTime": "15:00",
+    "position": "Manager",
+    "status": "completed",
+    "hoursWorked": 8,
+    "notes": "Opening shift, staff meeting at 2pm"
+  },
+  {
+    "id": "shift-002",
+    "staffId": "staff-002",
+    "date": "2023-03-15",
+    "startTime": "07:00",
+    "endTime": "13:00",
+    "position": "Barista",
+    "status": "completed",
+    "hoursWorked": 6,
+    "notes": "Morning rush handled well"
+  },
+  {
+    "id": "shift-003",
+    "staffId": "staff-003",
+    "date": "2023-03-15",
+    "startTime": "06:00",
+    "endTime": "14:00",
+    "position": "Pastry Chef",
+    "status": "completed",
+    "hoursWorked": 8,
+    "notes": "Prepared special St. Patrick's Day pastries"
+  },
+  {
+    "id": "shift-004",
+    "staffId": "staff-005",
+    "date": "2023-03-15",
+    "startTime": "13:00",
+    "endTime": "19:00",
+    "position": "Barista",
+    "status": "completed",
+    "hoursWorked": 6,
+    "notes": "Afternoon shift"
+  },
+  {
+    "id": "shift-005",
+    "staffId": "staff-001",
+    "date": "2023-03-16",
+    "startTime": "07:00",
+    "endTime": "15:00",
+    "position": "Manager",
+    "status": "scheduled",
+    "notes": "Supplier delivery expected at 10am"
+  },
+  {
+    "id": "shift-006",
+    "staffId": "staff-002",
+    "date": "2023-03-16",
+    "startTime": "07:00",
+    "endTime": "13:00",
+    "position": "Barista",
+    "status": "scheduled",
+    "notes": ""
+  },
+  {
+    "id": "shift-007",
+    "staffId": "staff-003",
+    "date": "2023-03-16",
+    "startTime": "06:00",
+    "endTime": "14:00",
+    "position": "Pastry Chef",
+    "status": "scheduled",
+    "notes": ""
+  },
+  {
+    "id": "shift-008",
+    "staffId": "staff-005",
+    "date": "2023-03-16",
+    "startTime": "13:00",
+    "endTime": "19:00",
+    "position": "Barista",
+    "status": "scheduled",
+    "notes": ""
+  },
+  {
+    "id": "shift-009",
+    "staffId": "staff-001",
+    "date": "2023-03-17",
+    "startTime": "07:00",
+    "endTime": "15:00",
+    "position": "Manager",
+    "status": "scheduled",
+    "notes": "Inventory check scheduled"
+  },
+  {
+    "id": "shift-010",
+    "staffId": "staff-002",
+    "date": "2023-03-17",
+    "startTime": "07:00",
+    "endTime": "13:00",
+    "position": "Barista",
+    "status": "sick-leave",
+    "notes": "Called in sick - flu symptoms"
+  },
+  {
+    "id": "shift-011",
+    "staffId": "staff-005",
+    "date": "2023-03-17",
+    "startTime": "07:00",
+    "endTime": "15:00",
+    "position": "Barista",
+    "status": "scheduled",
+    "notes": "Extended shift to cover for Emma"
+  },
+  {
+    "id": "shift-012",
+    "staffId": "staff-003",
+    "date": "2023-03-17",
+    "startTime": "06:00",
+    "endTime": "14:00",
+    "position": "Pastry Chef",
+    "status": "scheduled",
+    "notes": "Weekend prep"
+  }
+] 

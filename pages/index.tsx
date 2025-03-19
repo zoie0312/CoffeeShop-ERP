@@ -79,8 +79,9 @@ const Dashboard = () => {
   const quickActions = [
     { text: 'New Order', path: '/pos' },
     { text: 'Add Inventory', path: '/inventory' },
-    { text: 'Daily Report', path: '/reports' },
-    { text: 'Staff Schedule', path: '/staff' }
+    { text: 'Manage Customers', path: '/customers' },
+    { text: 'Staff Schedule', path: '/staff' },
+    { text: 'Daily Report', path: '/reports' }
   ];
 
   return (

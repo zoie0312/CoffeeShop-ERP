@@ -1,0 +1,51 @@
+[
+  {
+    "id": "feedback-001",
+    "customerId": "cust-002",
+    "date": "2023-01-25",
+    "rating": 4,
+    "comment": "Great coffee but WiFi was slow today.",
+    "resolved": true,
+    "response": "Thank you for your feedback! We've upgraded our WiFi service.",
+    "category": "service"
+  },
+  {
+    "id": "feedback-002",
+    "customerId": "cust-003",
+    "date": "2023-01-30",
+    "rating": 5,
+    "comment": "The chai latte was perfect and the staff was very friendly.",
+    "resolved": true,
+    "response": "Thank you for your kind words! We're glad you enjoyed your experience.",
+    "category": "product"
+  },
+  {
+    "id": "feedback-003",
+    "customerId": "cust-005",
+    "date": "2023-02-10",
+    "rating": 3,
+    "comment": "The quiche was a bit cold.",
+    "resolved": true,
+    "response": "We apologize for the cold quiche and have addressed this with our kitchen staff.",
+    "category": "product"
+  },
+  {
+    "id": "feedback-004",
+    "customerId": "cust-001",
+    "date": "2023-02-14",
+    "rating": 5,
+    "comment": "I love the new seasonal blend!",
+    "resolved": true,
+    "response": "We're thrilled to hear you enjoy our new blend!",
+    "category": "product"
+  },
+  {
+    "id": "feedback-005",
+    "customerId": "cust-004",
+    "date": "2023-02-17",
+    "rating": 2,
+    "comment": "Long wait time today and the coffee was not as hot as usual.",
+    "resolved": false,
+    "category": "service"
+  }
+] 

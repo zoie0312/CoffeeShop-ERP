@@ -1,0 +1,90 @@
+[
+  {
+    "id": "cust-001",
+    "firstName": "Emily",
+    "lastName": "Johnson",
+    "email": "emily.johnson@email.com",
+    "phone": "555-123-4567",
+    "address": "123 Maple Street, Bean City, BC 12345",
+    "birthdate": "1985-04-15",
+    "joinDate": "2022-01-10",
+    "points": 150,
+    "totalSpent": 287.50,
+    "status": "regular",
+    "notes": "Visits every morning before work",
+    "preferences": {
+      "favoriteProducts": ["Cappuccino", "Blueberry Muffin"],
+      "milkPreference": "Oat Milk",
+      "sugarPreference": "One Raw Sugar"
+    }
+  },
+  {
+    "id": "cust-002",
+    "firstName": "Michael",
+    "lastName": "Chen",
+    "email": "mchen@email.com",
+    "phone": "555-234-5678",
+    "address": "456 Oak Avenue, Bean City, BC 12345",
+    "birthdate": "1990-08-22",
+    "joinDate": "2022-03-05",
+    "points": 320,
+    "totalSpent": 475.25,
+    "status": "vip",
+    "notes": "Works remotely from coffee shop often",
+    "preferences": {
+      "favoriteProducts": ["Cold Brew", "Avocado Toast"],
+      "milkPreference": "Almond Milk",
+      "sugarPreference": "No Sugar"
+    }
+  },
+  {
+    "id": "cust-003",
+    "firstName": "Sofia",
+    "lastName": "Rodriguez",
+    "email": "sofia.r@email.com",
+    "phone": "555-345-6789",
+    "address": "789 Pine Lane, Bean City, BC 12345",
+    "birthdate": "1988-11-30",
+    "joinDate": "2022-02-14",
+    "points": 75,
+    "totalSpent": 120.00,
+    "status": "regular",
+    "notes": "Prefers window seating",
+    "preferences": {
+      "favoriteProducts": ["Chai Latte", "Chocolate Croissant"],
+      "milkPreference": "Whole Milk",
+      "sugarPreference": "Honey"
+    }
+  },
+  {
+    "id": "cust-004",
+    "firstName": "James",
+    "lastName": "Wilson",
+    "email": "jwilson@email.com",
+    "phone": "555-456-7890",
+    "joinDate": "2022-06-01",
+    "points": 10,
+    "totalSpent": 25.50,
+    "status": "new",
+    "notes": "Recently moved to the area"
+  },
+  {
+    "id": "cust-005",
+    "firstName": "Aisha",
+    "lastName": "Patel",
+    "email": "aisha.patel@email.com",
+    "phone": "555-567-8901",
+    "address": "101 Cedar Street, Bean City, BC 12345",
+    "birthdate": "1992-05-18",
+    "joinDate": "2021-11-22",
+    "points": 420,
+    "totalSpent": 632.75,
+    "status": "vip",
+    "notes": "Author who writes in the coffee shop",
+    "preferences": {
+      "favoriteProducts": ["Americano", "Spinach Quiche"],
+      "milkPreference": "No Milk",
+      "sugarPreference": "Stevia"
+    }
+  }
+] 

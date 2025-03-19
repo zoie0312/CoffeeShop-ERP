@@ -1,0 +1,127 @@
+[
+  {
+    "id": "staff-001",
+    "firstName": "John",
+    "lastName": "Smith",
+    "email": "john.smith@beancounter.com",
+    "phone": "555-123-4567",
+    "position": "Manager",
+    "department": "Operations",
+    "hireDate": "2021-03-15",
+    "status": "active",
+    "address": "123 Coffee Lane, Bean City, BC 12345",
+    "emergencyContact": {
+      "name": "Sarah Smith",
+      "relationship": "Spouse",
+      "phone": "555-987-6543"
+    },
+    "bankDetails": {
+      "accountName": "John Smith",
+      "accountNumber": "********1234",
+      "bankName": "Bean Bank"
+    },
+    "salary": 52000,
+    "paymentFrequency": "bi-weekly",
+    "notes": "Team lead for morning shifts"
+  },
+  {
+    "id": "staff-002",
+    "firstName": "Emma",
+    "lastName": "Johnson",
+    "email": "emma.johnson@beancounter.com",
+    "phone": "555-234-5678",
+    "position": "Barista",
+    "department": "Service",
+    "hireDate": "2022-01-10",
+    "status": "active",
+    "address": "456 Espresso Ave, Bean City, BC 12345",
+    "emergencyContact": {
+      "name": "Michael Johnson",
+      "relationship": "Father",
+      "phone": "555-876-5432"
+    },
+    "bankDetails": {
+      "accountName": "Emma Johnson",
+      "accountNumber": "********5678",
+      "bankName": "Coffee Credit Union"
+    },
+    "hourlyRate": 16.50,
+    "paymentFrequency": "weekly",
+    "notes": "Certified in latte art, excellent customer service skills"
+  },
+  {
+    "id": "staff-003",
+    "firstName": "David",
+    "lastName": "Chen",
+    "email": "david.chen@beancounter.com",
+    "phone": "555-345-6789",
+    "position": "Pastry Chef",
+    "department": "Kitchen",
+    "hireDate": "2021-06-22",
+    "status": "active",
+    "address": "789 Mocha Street, Bean City, BC 12345",
+    "emergencyContact": {
+      "name": "Lucy Chen",
+      "relationship": "Sister",
+      "phone": "555-765-4321"
+    },
+    "bankDetails": {
+      "accountName": "David Chen",
+      "accountNumber": "********9101",
+      "bankName": "Bean Bank"
+    },
+    "hourlyRate": 18.75,
+    "paymentFrequency": "bi-weekly",
+    "notes": "Specializes in gluten-free pastries"
+  },
+  {
+    "id": "staff-004",
+    "firstName": "Sophia",
+    "lastName": "Garcia",
+    "email": "sophia.garcia@beancounter.com",
+    "phone": "555-456-7890",
+    "position": "Shift Supervisor",
+    "department": "Operations",
+    "hireDate": "2022-04-05",
+    "status": "on-leave",
+    "address": "321 Latte Lane, Bean City, BC 12345",
+    "emergencyContact": {
+      "name": "Rafael Garcia",
+      "relationship": "Brother",
+      "phone": "555-654-3210"
+    },
+    "bankDetails": {
+      "accountName": "Sophia Garcia",
+      "accountNumber": "********1122",
+      "bankName": "Coffee Credit Union"
+    },
+    "hourlyRate": 18.00,
+    "paymentFrequency": "bi-weekly",
+    "notes": "On maternity leave until July 2023"
+  },
+  {
+    "id": "staff-005",
+    "firstName": "Michael",
+    "lastName": "Taylor",
+    "email": "michael.taylor@beancounter.com",
+    "phone": "555-567-8901",
+    "position": "Barista",
+    "department": "Service",
+    "hireDate": "2022-09-15",
+    "status": "active",
+    "address": "654 Arabica Ave, Bean City, BC 12345",
+    "emergencyContact": {
+      "name": "Jennifer Taylor",
+      "relationship": "Mother",
+      "phone": "555-543-2109"
+    },
+    "bankDetails": {
+      "accountName": "Michael Taylor",
+      "accountNumber": "********3344",
+      "bankName": "Bean Bank"
+    },
+    "hourlyRate": 15.75,
+    "paymentFrequency": "weekly",
+    "notes": "Part-time, student at Bean City University"
+  }
+] 
