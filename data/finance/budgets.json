@@ -1,0 +1,142 @@
+[
+    {
+        "id": "budget-2023-Q2",
+        "name": "Q2 2023 Budget",
+        "startDate": "2023-04-01",
+        "endDate": "2023-06-30",
+        "status": "active",
+        "createdBy": "Jane Smith",
+        "createdAt": "2023-03-15",
+        "categories": [
+            {
+                "category": "Revenue",
+                "budgeted": 120000.00,
+                "actual": 82567.45,
+                "variance": -37432.55,
+                "subcategories": [
+                    { "name": "Coffee Sales", "budgeted": 65000.00, "actual": 45123.75 },
+                    { "name": "Food Sales", "budgeted": 35000.00, "actual": 23456.89 },
+                    { "name": "Merchandise", "budgeted": 10000.00, "actual": 7890.45 },
+                    { "name": "Other", "budgeted": 10000.00, "actual": 6096.36 }
+                ]
+            },
+            {
+                "category": "Inventory",
+                "budgeted": 42000.00,
+                "actual": 28532.50,
+                "variance": -13467.50,
+                "subcategories": [
+                    { "name": "Coffee Beans", "budgeted": 15000.00, "actual": 10234.56 },
+                    { "name": "Dairy", "budgeted": 12000.00, "actual": 8765.43 },
+                    { "name": "Food", "budgeted": 10000.00, "actual": 6543.21 },
+                    { "name": "Other Ingredients", "budgeted": 5000.00, "actual": 2989.30 }
+                ]
+            },
+            {
+                "category": "Labor",
+                "budgeted": 36000.00,
+                "actual": 23456.78,
+                "variance": -12543.22,
+                "subcategories": [
+                    { "name": "Barista Wages", "budgeted": 25000.00, "actual": 16789.45 },
+                    { "name": "Kitchen Staff", "budgeted": 8000.00, "actual": 5432.10 },
+                    { "name": "Management", "budgeted": 3000.00, "actual": 1235.23 }
+                ]
+            },
+            {
+                "category": "Fixed Costs",
+                "budgeted": 21000.00,
+                "actual": 14000.00,
+                "variance": -7000.00,
+                "subcategories": [
+                    { "name": "Rent", "budgeted": 15000.00, "actual": 10000.00 },
+                    { "name": "Insurance", "budgeted": 2000.00, "actual": 1325.00 },
+                    { "name": "Utilities", "budgeted": 4000.00, "actual": 2675.00 }
+                ]
+            },
+            {
+                "category": "Variable Costs",
+                "budgeted": 15000.00,
+                "actual": 9876.54,
+                "variance": -5123.46,
+                "subcategories": [
+                    { "name": "Supplies", "budgeted": 5000.00, "actual": 3456.78 },
+                    { "name": "Maintenance", "budgeted": 5000.00, "actual": 2987.65 },
+                    { "name": "Marketing", "budgeted": 3000.00, "actual": 2345.67 },
+                    { "name": "Miscellaneous", "budgeted": 2000.00, "actual": 1086.44 }
+                ]
+            }
+        ],
+        "notes": "Q2 budget with adjustments for seasonal variations. Expect higher coffee sales as summer approaches."
+    },
+    {
+        "id": "budget-2023-Q3",
+        "name": "Q3 2023 Budget",
+        "startDate": "2023-07-01",
+        "endDate": "2023-09-30",
+        "status": "planned",
+        "createdBy": "Jane Smith",
+        "createdAt": "2023-05-20",
+        "categories": [
+            {
+                "category": "Revenue",
+                "budgeted": 130000.00,
+                "actual": 0.00,
+                "variance": -130000.00,
+                "subcategories": [
+                    { "name": "Coffee Sales", "budgeted": 70000.00, "actual": 0.00 },
+                    { "name": "Food Sales", "budgeted": 40000.00, "actual": 0.00 },
+                    { "name": "Merchandise", "budgeted": 10000.00, "actual": 0.00 },
+                    { "name": "Other", "budgeted": 10000.00, "actual": 0.00 }
+                ]
+            },
+            {
+                "category": "Inventory",
+                "budgeted": 45000.00,
+                "actual": 0.00,
+                "variance": -45000.00,
+                "subcategories": [
+                    { "name": "Coffee Beans", "budgeted": 18000.00, "actual": 0.00 },
+                    { "name": "Dairy", "budgeted": 12000.00, "actual": 0.00 },
+                    { "name": "Food", "budgeted": 10000.00, "actual": 0.00 },
+                    { "name": "Other Ingredients", "budgeted": 5000.00, "actual": 0.00 }
+                ]
+            },
+            {
+                "category": "Labor",
+                "budgeted": 40000.00,
+                "actual": 0.00,
+                "variance": -40000.00,
+                "subcategories": [
+                    { "name": "Barista Wages", "budgeted": 28000.00, "actual": 0.00 },
+                    { "name": "Kitchen Staff", "budgeted": 9000.00, "actual": 0.00 },
+                    { "name": "Management", "budgeted": 3000.00, "actual": 0.00 }
+                ]
+            },
+            {
+                "category": "Fixed Costs",
+                "budgeted": 21000.00,
+                "actual": 0.00,
+                "variance": -21000.00,
+                "subcategories": [
+                    { "name": "Rent", "budgeted": 15000.00, "actual": 0.00 },
+                    { "name": "Insurance", "budgeted": 2000.00, "actual": 0.00 },
+                    { "name": "Utilities", "budgeted": 4000.00, "actual": 0.00 }
+                ]
+            },
+            {
+                "category": "Variable Costs",
+                "budgeted": 18000.00,
+                "actual": 0.00,
+                "variance": -18000.00,
+                "subcategories": [
+                    { "name": "Supplies", "budgeted": 6000.00, "actual": 0.00 },
+                    { "name": "Maintenance", "budgeted": 5000.00, "actual": 0.00 },
+                    { "name": "Marketing", "budgeted": 5000.00, "actual": 0.00 },
+                    { "name": "Miscellaneous", "budgeted": 2000.00, "actual": 0.00 }
+                ]
+            }
+        ],
+        "notes": "Q3 budget with increased sales projections for summer. Additional marketing budget for seasonal promotions."
+    }
+] 
