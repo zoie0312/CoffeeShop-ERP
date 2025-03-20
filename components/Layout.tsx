@@ -63,8 +63,28 @@ const Layout: React.FC<LayoutProps> = ({ children, title }) => {
     { text: 'Inventory', icon: <InventoryIcon />, path: '/inventory' },
     { text: 'Staff', icon: <PeopleIcon />, path: '/staff' },
     { text: 'Customers', icon: <PersonIcon />, path: '/customers' },
-    { text: 'Reports', icon: <BarChartIcon />, path: '/reports' },
-    { text: 'Recipes & Menu', icon: <MenuBookIcon />, path: '/recipes' },
+    { 
+      text: 'Reports', 
+      icon: <BarChartIcon />, 
+      path: '/reports',
+      subItems: [
+        { text: 'Overview', path: '/reports' },
+        { text: 'Sales Report', path: '/reports/sales' },
+        { text: 'Product Performance', path: '/reports/products' },
+        { text: 'Customer Analysis', path: '/reports/customers' },
+        { text: 'Inventory Turnover', path: '/reports/inventory' }
+      ]
+    },
+    {
+      text: 'Recipes & Menu',
+      icon: <MenuBookIcon />,
+      path: '/recipes',
+      subItems: [
+        { text: 'Recipes', path: '/recipes' },
+        { text: 'Menu', path: '/recipes/menu' },
+        { text: 'Categories', path: '/recipes/categories' }
+      ]
+    },
     { text: 'Finance', icon: <AttachMoneyIcon />, path: '/finance' },
   ];
 
@@ -85,29 +105,73 @@ const Layout: React.FC<LayoutProps> = ({ children, title }) => {
       </Box>
       <List sx={{ flexGrow: 1, pt: 2 }}>
         {menuItems.map((item) => (
-          <ListItem key={item.text} disablePadding>
-            <ListItemButton
-              selected={router.pathname === item.path}
-              component={Link} 
-              href={item.path}
-              onClick={() => {
-                if (isMobile) setMobileOpen(false);
-              }}
-              sx={{
-                py: 1.5,
-                borderLeft: '3px solid transparent',
-                borderLeftColor: router.pathname === item.path ? theme.palette.primary.main : 'transparent',
-                '&.Mui-selected': {
-                  backgroundColor: alpha(theme.palette.primary.main, 0.1),
-                }
-              }}
-            >
-              <ListItemIcon sx={{ minWidth: 40, color: router.pathname === item.path ? theme.palette.primary.main : theme.palette.text.secondary }}>
-                {item.icon}
-              </ListItemIcon>
-              <ListItemText primary={item.text} />
-            </ListItemButton>
-          </ListItem>
+          <React.Fragment key={item.text}>
+            <ListItem disablePadding>
+              <ListItemButton
+                selected={router.pathname === item.path || (item.subItems && item.subItems.some(subItem => router.pathname === subItem.path))}
+                component={Link} 
+                href={item.path}
+                onClick={() => {
+                  if (isMobile) setMobileOpen(false);
+                }}
+                sx={{
+                  py: 1.5,
+                  borderLeft: '3px solid transparent',
+                  borderLeftColor: router.pathname === item.path || (item.subItems && item.subItems.some(subItem => router.pathname === subItem.path)) 
+                    ? theme.palette.primary.main 
+                    : 'transparent',
+                  '&.Mui-selected': {
+                    backgroundColor: alpha(theme.palette.primary.main, 0.1),
+                  }
+                }}
+              >
+                <ListItemIcon sx={{ 
+                  minWidth: 40, 
+                  color: router.pathname === item.path || (item.subItems && item.subItems.some(subItem => router.pathname === subItem.path))
+                    ? theme.palette.primary.main 
+                    : theme.palette.text.secondary 
+                }}>
+                  {item.icon}
+                </ListItemIcon>
+                <ListItemText primary={item.text} />
+              </ListItemButton>
+            </ListItem>
+            
+            {/* Render submenu items if they exist */}
+            {item.subItems && item.subItems.map((subItem) => (
+              <ListItem key={subItem.text} disablePadding>
+                <ListItemButton
+                  selected={router.pathname === subItem.path}
+                  component={Link} 
+                  href={subItem.path}
+                  onClick={() => {
+                    if (isMobile) setMobileOpen(false);
+                  }}
+                  sx={{
+                    py: 1.2,
+                    pl: 7, // Indent submenu items
+                    borderLeft: '3px solid transparent',
+                    borderLeftColor: router.pathname === subItem.path ? theme.palette.primary.main : 'transparent',
+                    '&.Mui-selected': {
+                      backgroundColor: alpha(theme.palette.primary.main, 0.1),
+                    }
+                  }}
+                >
+                  <ListItemText 
+                    primary={subItem.text} 
+                    primaryTypographyProps={{ 
+                      variant: 'body2',
+                      sx: { 
+                        color: router.pathname === subItem.path 
+                          ? theme.palette.primary.main 
+                          : theme.palette.text.secondary 
+                      }
+                    }} 
+                  />
+                </ListItemButton>
+              </ListItem>
+            ))}
+          </React.Fragment>
         ))}
       </List>
       <Box sx={{ p: 2, borderTop: `1px solid ${theme.palette.divider}`, textAlign: 'center' }}>

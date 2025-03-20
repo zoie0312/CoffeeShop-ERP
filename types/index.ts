@@ -232,4 +232,71 @@ export interface Performance {
   areasForImprovement: string;
   goals: string;
   notes?: string;
+}
+
+// Recipes & Menu related types
+export interface Recipe {
+    id: string;
+    name: string;
+    description: string;
+    category: string;
+    ingredients: Array<{
+        inventoryItemId: string;
+        name: string;
+        quantity: number;
+        unit: string;
+        cost: number;
+    }>;
+    preparationTime: number; // in minutes
+    preparationSteps: string[];
+    costPerServing: number;
+    servingSize: number;
+    totalCost: number;
+    nutritionalInfo?: {
+        calories?: number;
+        protein?: number;
+        carbs?: number;
+        fat?: number;
+        allergens?: string[];
+    };
+    isActive: boolean;
+    dateCreated: string;
+    dateModified: string;
+    createdBy: string;
+    modifiedBy: string;
+}
+
+export interface MenuItem {
+    id: string;
+    name: string;
+    description: string;
+    category: string;
+    price: number;
+    cost: number;
+    profit: number;
+    profitMargin: number;
+    recipeId: string;
+    imageUrl?: string;
+    isFeatured: boolean;
+    isSeasonalItem: boolean;
+    seasonStartDate?: string;
+    seasonEndDate?: string;
+    isActive: boolean;
+    nutritionalInfo?: {
+        calories?: number;
+        protein?: number;
+        carbs?: number;
+        fat?: number;
+        allergens?: string[];
+    };
+    dateCreated: string;
+    dateModified: string;
+}
+
+export interface MenuCategory {
+    id: string;
+    name: string;
+    description: string;
+    displayOrder: number;
+    isActive: boolean;
 } 

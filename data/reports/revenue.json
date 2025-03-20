@@ -1,0 +1,44 @@
+[
+    {
+        "month": "Jan",
+        "coffee": 5425.75,
+        "food": 3845.50,
+        "bakery": 1890.25,
+        "merchandise": 875.50
+    },
+    {
+        "month": "Feb",
+        "coffee": 5120.30,
+        "food": 3625.20,
+        "bakery": 1750.75,
+        "merchandise": 920.30
+    },
+    {
+        "month": "Mar",
+        "coffee": 5680.90,
+        "food": 4120.60,
+        "bakery": 1950.40,
+        "merchandise": 1050.15
+    },
+    {
+        "month": "Apr",
+        "coffee": 6240.50,
+        "food": 4450.30,
+        "bakery": 2145.75,
+        "merchandise": 1180.60
+    },
+    {
+        "month": "May",
+        "coffee": 6780.25,
+        "food": 4720.80,
+        "bakery": 2340.50,
+        "merchandise": 1320.90
+    },
+    {
+        "month": "Jun",
+        "coffee": 7234.50,
+        "food": 4876.30,
+        "bakery": 2102.75,
+        "merchandise": 1658.90
+    }
+] 

@@ -1,0 +1,178 @@
+[
+    {
+        "id": "r001",
+        "name": "Classic Espresso",
+        "description": "Traditional Italian espresso shot",
+        "category": "Coffee",
+        "ingredients": [
+            {
+                "inventoryItemId": "i001",
+                "name": "Coffee Beans - Espresso Blend",
+                "quantity": 18,
+                "unit": "g",
+                "cost": 0.45
+            },
+            {
+                "inventoryItemId": "i010",
+                "name": "Filtered Water",
+                "quantity": 40,
+                "unit": "ml",
+                "cost": 0.02
+            }
+        ],
+        "preparationTime": 2,
+        "preparationSteps": [
+            "Grind coffee beans to fine consistency",
+            "Tamp coffee grounds evenly in portafilter",
+            "Pull shot for 25-30 seconds at 9 bars of pressure",
+            "Serve immediately"
+        ],
+        "costPerServing": 0.47,
+        "servingSize": 1,
+        "totalCost": 0.47,
+        "nutritionalInfo": {
+            "calories": 5,
+            "protein": 0.1,
+            "carbs": 0.5,
+            "fat": 0.1,
+            "allergens": []
+        },
+        "isActive": true,
+        "dateCreated": "2024-01-05T10:30:00Z",
+        "dateModified": "2024-01-05T10:30:00Z",
+        "createdBy": "staff001",
+        "modifiedBy": "staff001"
+    },
+    {
+        "id": "r002",
+        "name": "Cappuccino",
+        "description": "Equal parts espresso, steamed milk, and milk foam",
+        "category": "Coffee",
+        "ingredients": [
+            {
+                "inventoryItemId": "i001",
+                "name": "Coffee Beans - Espresso Blend",
+                "quantity": 18,
+                "unit": "g",
+                "cost": 0.45
+            },
+            {
+                "inventoryItemId": "i010",
+                "name": "Filtered Water",
+                "quantity": 40,
+                "unit": "ml",
+                "cost": 0.02
+            },
+            {
+                "inventoryItemId": "i002",
+                "name": "Whole Milk",
+                "quantity": 120,
+                "unit": "ml",
+                "cost": 0.25
+            }
+        ],
+        "preparationTime": 4,
+        "preparationSteps": [
+            "Pull a shot of espresso",
+            "Steam milk to 65°C creating microfoam",
+            "Pour steamed milk over espresso, holding back foam",
+            "Top with milk foam to create 1/3 espresso, 1/3 steamed milk, 1/3 foam ratio"
+        ],
+        "costPerServing": 0.72,
+        "servingSize": 1,
+        "totalCost": 0.72,
+        "nutritionalInfo": {
+            "calories": 120,
+            "protein": 6,
+            "carbs": 10,
+            "fat": 6,
+            "allergens": ["Milk"]
+        },
+        "isActive": true,
+        "dateCreated": "2024-01-05T10:35:00Z",
+        "dateModified": "2024-02-10T14:20:00Z",
+        "createdBy": "staff001",
+        "modifiedBy": "staff002"
+    },
+    {
+        "id": "r003",
+        "name": "Chocolate Chip Cookie",
+        "description": "Classic homemade chocolate chip cookie",
+        "category": "Bakery",
+        "ingredients": [
+            {
+                "inventoryItemId": "i012",
+                "name": "All-Purpose Flour",
+                "quantity": 60,
+                "unit": "g",
+                "cost": 0.12
+            },
+            {
+                "inventoryItemId": "i013",
+                "name": "Unsalted Butter",
+                "quantity": 40,
+                "unit": "g",
+                "cost": 0.35
+            },
+            {
+                "inventoryItemId": "i014",
+                "name": "White Sugar",
+                "quantity": 30,
+                "unit": "g",
+                "cost": 0.08
+            },
+            {
+                "inventoryItemId": "i015",
+                "name": "Brown Sugar",
+                "quantity": 30,
+                "unit": "g",
+                "cost": 0.10
+            },
+            {
+                "inventoryItemId": "i016",
+                "name": "Egg",
+                "quantity": 0.25,
+                "unit": "unit",
+                "cost": 0.12
+            },
+            {
+                "inventoryItemId": "i017",
+                "name": "Chocolate Chips",
+                "quantity": 40,
+                "unit": "g",
+                "cost": 0.30
+            },
+            {
+                "inventoryItemId": "i018",
+                "name": "Vanilla Extract",
+                "quantity": 2,
+                "unit": "ml",
+                "cost": 0.05
+            }
+        ],
+        "preparationTime": 20,
+        "preparationSteps": [
+            "Cream butter and sugars until light and fluffy",
+            "Beat in egg and vanilla",
+            "Mix in flour and other dry ingredients",
+            "Fold in chocolate chips",
+            "Scoop dough onto baking sheet",
+            "Bake at 350°F for 10-12 minutes"
+        ],
+        "costPerServing": 1.12,
+        "servingSize": 1,
+        "totalCost": 1.12,
+        "nutritionalInfo": {
+            "calories": 280,
+            "protein": 3,
+            "carbs": 35,
+            "fat": 15,
+            "allergens": ["Egg", "Wheat", "Dairy"]
+        },
+        "isActive": true,
+        "dateCreated": "2024-01-10T09:15:00Z",
+        "dateModified": "2024-01-10T09:15:00Z",
+        "createdBy": "staff003",
+        "modifiedBy": "staff003"
+    }
+] 

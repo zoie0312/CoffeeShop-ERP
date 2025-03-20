@@ -1,0 +1,12 @@
+[
+    { "id": 1, "name": "John Smith", "visits": 32, "totalSpent": 384.50, "avgOrderValue": 12.02, "lastVisit": "2023-05-12", "loyaltyPoints": 320, "segment": "Regular" },
+    { "id": 2, "name": "Emma Johnson", "visits": 45, "totalSpent": 675.25, "avgOrderValue": 15.01, "lastVisit": "2023-05-15", "loyaltyPoints": 450, "segment": "Loyal" },
+    { "id": 3, "name": "Michael Brown", "visits": 12, "totalSpent": 156.75, "avgOrderValue": 13.06, "lastVisit": "2023-04-30", "loyaltyPoints": 120, "segment": "Occasional" },
+    { "id": 4, "name": "Olivia Williams", "visits": 65, "totalSpent": 1105.50, "avgOrderValue": 17.01, "lastVisit": "2023-05-17", "loyaltyPoints": 650, "segment": "VIP" },
+    { "id": 5, "name": "Daniel Jones", "visits": 8, "totalSpent": 87.20, "avgOrderValue": 10.90, "lastVisit": "2023-04-15", "loyaltyPoints": 80, "segment": "New" },
+    { "id": 6, "name": "Sophia Davis", "visits": 28, "totalSpent": 392.00, "avgOrderValue": 14.00, "lastVisit": "2023-05-10", "loyaltyPoints": 280, "segment": "Regular" },
+    { "id": 7, "name": "James Miller", "visits": 52, "totalSpent": 884.00, "avgOrderValue": 17.00, "lastVisit": "2023-05-16", "loyaltyPoints": 520, "segment": "Loyal" },
+    { "id": 8, "name": "Charlotte Wilson", "visits": 18, "totalSpent": 207.00, "avgOrderValue": 11.50, "lastVisit": "2023-05-02", "loyaltyPoints": 180, "segment": "Occasional" },
+    { "id": 9, "name": "Benjamin Moore", "visits": 38, "totalSpent": 532.00, "avgOrderValue": 14.00, "lastVisit": "2023-05-14", "loyaltyPoints": 380, "segment": "Regular" },
+    { "id": 10, "name": "Amelia Taylor", "visits": 72, "totalSpent": 1296.00, "avgOrderValue": 18.00, "lastVisit": "2023-05-17", "loyaltyPoints": 720, "segment": "VIP" }
+] 

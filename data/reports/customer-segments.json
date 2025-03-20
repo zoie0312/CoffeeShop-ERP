@@ -1,0 +1,7 @@
+[
+    { "segment": "VIP", "count": 2, "revenue": 2401.50, "percentage": 20 },
+    { "segment": "Loyal", "count": 2, "revenue": 1559.25, "percentage": 20 },
+    { "segment": "Regular", "count": 3, "revenue": 1308.50, "percentage": 30 },
+    { "segment": "Occasional", "count": 2, "revenue": 363.75, "percentage": 20 },
+    { "segment": "New", "count": 1, "revenue": 87.20, "percentage": 10 }
+] 

@@ -1,0 +1,51 @@
+[
+    {
+        "id": "mc001",
+        "name": "Coffee",
+        "description": "Our signature coffee drinks made with freshly roasted beans",
+        "displayOrder": 1,
+        "isActive": true
+    },
+    {
+        "id": "mc002",
+        "name": "Tea",
+        "description": "Selection of premium loose leaf teas",
+        "displayOrder": 2,
+        "isActive": true
+    },
+    {
+        "id": "mc003",
+        "name": "Cold Drinks",
+        "description": "Refreshing cold beverages, including iced coffee and tea",
+        "displayOrder": 3,
+        "isActive": true
+    },
+    {
+        "id": "mc004",
+        "name": "Bakery",
+        "description": "Freshly baked goods made in-house daily",
+        "displayOrder": 4,
+        "isActive": true
+    },
+    {
+        "id": "mc005",
+        "name": "Breakfast",
+        "description": "Breakfast items served until 11am",
+        "displayOrder": 5,
+        "isActive": true
+    },
+    {
+        "id": "mc006",
+        "name": "Lunch",
+        "description": "Sandwiches and light lunch options",
+        "displayOrder": 6,
+        "isActive": true
+    },
+    {
+        "id": "mc007",
+        "name": "Seasonal Specials",
+        "description": "Limited time seasonal offerings",
+        "displayOrder": 7,
+        "isActive": true
+    }
+] 
