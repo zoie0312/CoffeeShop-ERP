@@ -84,7 +84,6 @@ export default function CustomerAnalysisPage() {
         <Layout title="Customer Analysis Report">
             <Box sx={{ padding: 3 }}>
                 <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 3 }}>
-                    <Typography variant="h4" component="h1">Customer Analysis Report</Typography>
                     <Box>
                         <Button startIcon={<PrintIcon />} sx={{ mr: 1 }}>Print</Button>
                         <Button startIcon={<DownloadIcon />} sx={{ mr: 1 }}>Export</Button>

@@ -204,9 +204,6 @@ const SuppliersPage: React.FC = () => {
       </Head>
 
       <Box sx={{ mb: 4, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <Typography variant="h4" component="h1">
-          Supplier Management
-        </Typography>
         <Box sx={{ display: 'flex', gap: 2 }}>
           <Button 
             variant="outlined"

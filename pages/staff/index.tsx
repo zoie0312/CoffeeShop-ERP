@@ -207,9 +207,6 @@ const StaffPage: React.FC = () => {
       <Box mb={4}>
         <Grid container spacing={2} alignItems="center" justifyContent="space-between">
           <Grid item>
-            <Typography variant="h5" component="h2">
-              Staff Management
-            </Typography>
             <Typography variant="body2" color="textSecondary">
               Manage staff information, schedules, and performance
             </Typography>

@@ -81,7 +81,6 @@ export default function InventoryTurnoverPage() {
         <Layout title="Inventory Turnover Report">
             <Box sx={{ padding: 3 }}>
                 <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 3 }}>
-                    <Typography variant="h4" component="h1">Inventory Turnover Report</Typography>
                     <Box>
                         <Button startIcon={<PrintIcon />} sx={{ mr: 1 }}>Print</Button>
                         <Button startIcon={<DownloadIcon />} sx={{ mr: 1 }}>Export</Button>

@@ -201,9 +201,6 @@ export default function MenuPage() {
             <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
                 {/* Header */}
                 <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
-                    <Typography variant="h4" component="h1">
-                        Menu Management
-                    </Typography>
                     <Button
                         variant="contained"
                         color="primary"
