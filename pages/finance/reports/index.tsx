@@ -457,11 +457,14 @@ const ReportsPage: React.FC = () => {
                 <Box sx={{ padding: 3 }}>
                     <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 4 }}>
                         <Box>
-                            <NextLink href="/finance" passHref>
-                                <Button variant="text" component="a" sx={{ mt: -2, mb: 2 }}>
-                                    ← Back to Finance Dashboard
-                                </Button>
-                            </NextLink>
+                        <Button 
+                            variant="text" 
+                            sx={{ mt: -2, mb: 2 }}
+                            href="/finance"
+                            component={NextLink}
+                        >
+                            ← Back to Finance Dashboard
+                        </Button>
                         </Box>
                         <Button 
                             variant="contained" 

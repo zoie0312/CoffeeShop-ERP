@@ -278,11 +278,14 @@ const TransactionsPage: React.FC = () => {
         <Layout title="Financial Transactions">
             <Container maxWidth="lg" sx={{ mt: 4, mb: 8 }}>
                 <Box sx={{ mb: 2 }}>
-                    <NextLink href="/finance" passHref>
-                        <Button variant="text" component="a" sx={{ mt: -2, mb: 2 }}>
-                            ← Back to Finance Dashboard
-                        </Button>
-                    </NextLink>
+                    <Button 
+                        variant="text" 
+                        sx={{ mt: -2, mb: 2 }}
+                        href="/finance"
+                        component={NextLink}
+                    >
+                        ← Back to Finance Dashboard
+                    </Button>
                 </Box>
                 <Box sx={{ display: 'flex', mb: 3, justifyContent: 'space-between' }}>
                     <Stack direction="row" spacing={2} sx={{ alignItems: 'center' }}>
