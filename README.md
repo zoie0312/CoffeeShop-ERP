@@ -21,51 +21,69 @@ This is the Next.js version of the application, which utilizes Material-UI for a
 - Order history tracking
 - Receipt generation
 
-### Inventory Management (Coming Soon)
+### Inventory Management
 - Stock level tracking
 - Automatic reordering notifications
 - Waste recording
 - Ingredient usage analytics
 - Vendor management
+- Transaction history with support for different transaction types (restock, usage, etc.)
+- Stock level indicators and low stock warnings
 
-### Employee Management (Coming Soon)
+### Employee Management
 - Staff scheduling
 - Time and attendance tracking
 - Performance metrics
-- Payroll integration
+- Staff profiles with contact information
+- Training record views
+- Department filtering and search
 
-### Customer Relationship Management (Coming Soon)
+### Customer Relationship Management
 - Customer profiles and preferences
 - Loyalty program management
-- Marketing campaign tools
-- Customer feedback collection
+- Customer transaction recording
+- Customer feedback collection and management
+- Customer listing with search and filtering capabilities
 
-### Financial Management (Coming Soon)
+### Financial Management
 - Daily sales reports
 - Expense tracking
 - Profit and loss reporting
 - Tax calculations
+- Budget management
+- Account tracking
+- Financial transaction management
+- Comprehensive financial reporting
 
-### Recipe and Menu Management (Coming Soon)
+### Recipe and Menu Management
 - Standardized recipes
 - Cost calculations
 - Menu pricing optimization
 - Seasonal menu planning
+- Recipe categories management
+- Ingredient tracking integrated with inventory
 
-### Reporting and Analytics (Coming Soon)
+### Reporting and Analytics
 - Customizable reports
 - Sales trends analysis
 - Inventory optimization
 - Customer insights
+- Product performance metrics
+- Interactive data visualization
+- Multiple report types (sales, products, customers, inventory)
+- Export capabilities
 
 ## 💻 Technologies Used
 
-- Next.js
-- React
+- Next.js 15.2.3
+- React 19.0.0
 - TypeScript
-- Material-UI (MUI)
+- Material-UI (MUI v6.4.8)
 - Emotion (for styled components)
 - MUI Icons
+- MUI X Date Pickers
+- Chart.js for data visualization
+- date-fns for date handling
 
 ## 🚀 Getting Started
 
@@ -157,6 +175,15 @@ bean-counter-erp/
 ├── context/           # React Context for state management
 ├── hooks/             # Custom React hooks
 ├── pages/             # Next.js pages
+│   ├── api/           # API endpoints
+│   ├── customers/     # Customer management pages
+│   ├── finance/       # Financial management pages
+│   ├── inventory/     # Inventory management pages
+│   ├── pos/           # Point of Sale pages
+│   ├── recipes/       # Recipe & menu management pages
+│   ├── reports/       # Reporting and analytics pages
+│   └── staff/         # Staff management pages
+├── data/              # Mock data JSON files
 ├── public/            # Static assets
 ├── styles/            # CSS styles and theme configuration
 ├── types/             # TypeScript type definitions
@@ -167,14 +194,16 @@ bean-counter-erp/
 
 ## 📝 To-Do / Future Development
 
-- Complete additional modules (Inventory, Finance, etc.)
-- Add user authentication
-- Implement data persistence with a backend
-- Develop reporting and analytics capabilities
+- Add user authentication and role-based access control
+- Implement data persistence with a database
 - Create print-friendly layouts for receipts
 - Add multi-language support
-- Implement dark mode theme
 - Develop mobile apps for iOS and Android
+- PDF export for invoices and reports
+- Unit and integration testing
+- Performance optimizations
+- Implement real-time notifications
+- Add advanced analytics capabilities
 
 ## 👥 Contributing
 
@@ -192,4 +221,4 @@ For questions or feedback, please contact:
 
 ---
 
-*This project is a prototype created for demonstration purposes.* 
+*This project is a demonstration of a comprehensive coffee shop management system with a modern, responsive interface.* 
