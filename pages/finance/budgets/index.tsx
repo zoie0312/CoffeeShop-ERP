@@ -33,7 +33,8 @@ import {
     Stack,
     Alert,
     Tooltip,
-    Fab
+    Fab,
+    Container
 } from '@mui/material';
 import {
     Add as AddIcon,
@@ -53,6 +54,8 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { format, isAfter, isBefore, isWithinInterval } from 'date-fns';
+import NextLink from 'next/link';
+import Layout from '../../../components/Layout';
 
 // Mock data import - would be replaced by actual API call
 import budgetsData from '../../../data/finance/budgets.json';
@@ -330,472 +333,481 @@ const BudgetsPage: React.FC = () => {
     };
 
     return (
-        <Box sx={{ padding: 3 }}>
-            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 4 }}>
-                <Typography variant="h4" component="h1">
-                    Budgets
-                </Typography>
-                <Button 
-                    variant="contained" 
-                    startIcon={<AddIcon />}
-                    onClick={handleNewBudget}
-                >
-                    Create Budget
-                </Button>
-            </Box>
-            
-            {/* Budget Tab Navigation */}
-            <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                <Tabs value={tabValue} onChange={handleTabChange} aria-label="budget tabs">
-                    <Tab label={`Active Budgets (${activeBudgets.length})`} />
-                    <Tab label={`Planned Budgets (${plannedBudgets.length})`} />
-                    <Tab label={`Past Budgets (${pastBudgets.length})`} />
-                </Tabs>
-            </Box>
-            
-            {/* Active Budgets */}
-            <TabPanel value={tabValue} index={0}>
-                {loading ? (
-                    <Typography>Loading budgets...</Typography>
-                ) : activeBudgets.length === 0 ? (
-                    <Alert 
-                        severity="info"
-                        action={
-                            <Button color="inherit" size="small" onClick={handleNewBudget}>
-                                Create Now
-                            </Button>
-                        }
+        <Layout title="Budgets">
+            <Container maxWidth="lg" sx={{ mt: 4, mb: 8 }}>
+                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 4 }}>
+                    <Box>
+                        <Button 
+                            variant="text" 
+                            sx={{ mt: -2, mb: 2 }}
+                            href="/finance"
+                            component={NextLink}
+                        >
+                            ← Back to Finance Dashboard
+                        </Button>
+                    </Box>
+                    <Button 
+                        variant="contained" 
+                        startIcon={<AddIcon />}
+                        onClick={handleNewBudget}
                     >
-                        No active budgets found. Create a new budget to get started.
-                    </Alert>
-                ) : (
-                    <Grid container spacing={3}>
-                        {activeBudgets.map((budget) => (
-                            <Grid item xs={12} sm={6} md={4} key={budget.id}>
-                                {renderBudgetCard(budget)}
-                            </Grid>
-                        ))}
-                    </Grid>
-                )}
-            </TabPanel>
-            
-            {/* Planned Budgets */}
-            <TabPanel value={tabValue} index={1}>
-                {loading ? (
-                    <Typography>Loading budgets...</Typography>
-                ) : plannedBudgets.length === 0 ? (
-                    <Alert 
-                        severity="info"
-                        action={
-                            <Button color="inherit" size="small" onClick={handleNewBudget}>
-                                Create Now
-                            </Button>
-                        }
-                    >
-                        No planned budgets found. Plan ahead by creating a future budget.
-                    </Alert>
-                ) : (
-                    <Grid container spacing={3}>
-                        {plannedBudgets.map((budget) => (
-                            <Grid item xs={12} sm={6} md={4} key={budget.id}>
-                                {renderBudgetCard(budget)}
-                            </Grid>
-                        ))}
-                    </Grid>
-                )}
-            </TabPanel>
-            
-            {/* Past Budgets */}
-            <TabPanel value={tabValue} index={2}>
-                {loading ? (
-                    <Typography>Loading budgets...</Typography>
-                ) : pastBudgets.length === 0 ? (
-                    <Alert severity="info">
-                        No past budgets found.
-                    </Alert>
-                ) : (
-                    <Grid container spacing={3}>
-                        {pastBudgets.map((budget) => (
-                            <Grid item xs={12} sm={6} md={4} key={budget.id}>
-                                {renderBudgetCard(budget)}
-                            </Grid>
-                        ))}
-                    </Grid>
-                )}
-            </TabPanel>
-            
-            {/* Fixed Action Button */}
-            <Tooltip title="Create New Budget">
-                <Fab 
-                    color="primary" 
-                    aria-label="add"
-                    sx={{ position: 'fixed', bottom: 32, right: 32 }}
-                    onClick={handleNewBudget}
-                >
-                    <AddIcon />
-                </Fab>
-            </Tooltip>
-            
-            {/* Budget Details Dialog */}
-            <Dialog
-                open={budgetDetailsOpen}
-                onClose={handleCloseBudgetDetails}
-                maxWidth="lg"
-                fullWidth
-            >
-                {budgetDetails && (
-                    <>
-                        <DialogTitle sx={{ 
-                            bgcolor: 'primary.light',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'space-between'
-                        }}>
-                            <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                                <MoneyIcon sx={{ mr: 1 }} />
-                                <Typography variant="h6">
-                                    {budgetDetails.name}
-                                </Typography>
-                                <Chip 
-                                    label={budgetDetails.status.charAt(0).toUpperCase() + budgetDetails.status.slice(1)}
-                                    size="small"
-                                    color={budgetDetails.status === 'active' ? 'primary' : 
-                                        budgetDetails.status === 'planned' ? 'info' : 'default'}
-                                    sx={{ ml: 2 }}
-                                />
-                            </Box>
-                            <IconButton onClick={handleCloseBudgetDetails}>
-                                <CloseIcon />
-                            </IconButton>
-                        </DialogTitle>
-                        <DialogContent dividers>
-                            <Grid container spacing={3}>
-                                <Grid item xs={12} md={4}>
-                                    <Stack spacing={2}>
-                                        <Box>
-                                            <Typography variant="body2" color="text.secondary" gutterBottom>
-                                                Budget Period
-                                            </Typography>
-                                            <Typography variant="body1">
-                                                {format(new Date(budgetDetails.startDate), 'MMMM dd, yyyy')} - {format(new Date(budgetDetails.endDate), 'MMMM dd, yyyy')}
-                                            </Typography>
-                                        </Box>
-                                        
-                                        <Box>
-                                            <Typography variant="body2" color="text.secondary" gutterBottom>
-                                                Created By
-                                            </Typography>
-                                            <Typography variant="body1">
-                                                {budgetDetails.createdBy} on {format(new Date(budgetDetails.createdAt), 'MMMM dd, yyyy')}
-                                            </Typography>
-                                        </Box>
-                                        
-                                        {budgetDetails.notes && (
-                                            <Box>
-                                                <Typography variant="body2" color="text.secondary" gutterBottom>
-                                                    Notes
-                                                </Typography>
-                                                <Typography variant="body1">
-                                                    {budgetDetails.notes}
-                                                </Typography>
-                                            </Box>
-                                        )}
-                                    </Stack>
-                                </Grid>
-                                
-                                <Grid item xs={12} md={8}>
-                                    <Paper sx={{ p: 2, mb: 3 }}>
-                                        {(() => {
-                                            const { totalBudgeted, totalActual, totalVariance, percentSpent } = calculateTotals(budgetDetails);
-                                            const isOverBudget = totalVariance > 0;
-                                            const progressColor = isOverBudget ? 'error' : percentSpent > 85 ? 'warning' : 'success';
-                                            
-                                            return (
-                                                <>
-                                                    <Typography variant="h6" gutterBottom>
-                                                        Budget Summary
-                                                    </Typography>
-                                                    <Grid container spacing={3}>
-                                                        <Grid item xs={12} sm={4}>
-                                                            <Typography variant="body2" color="text.secondary">
-                                                                Total Budgeted
-                                                            </Typography>
-                                                            <Typography variant="h5" sx={{ fontWeight: 'medium' }}>
-                                                                {formatCurrency(totalBudgeted)}
-                                                            </Typography>
-                                                        </Grid>
-                                                        <Grid item xs={12} sm={4}>
-                                                            <Typography variant="body2" color="text.secondary">
-                                                                Total Spent
-                                                            </Typography>
-                                                            <Typography variant="h5" sx={{ fontWeight: 'medium' }}>
-                                                                {formatCurrency(totalActual)}
-                                                            </Typography>
-                                                        </Grid>
-                                                        <Grid item xs={12} sm={4}>
-                                                            <Typography variant="body2" color="text.secondary">
-                                                                Variance
-                                                            </Typography>
-                                                            <Typography 
-                                                                variant="h5" 
-                                                                sx={{ 
-                                                                    color: isOverBudget ? 'error.main' : 'success.main',
-                                                                    fontWeight: 'medium'
-                                                                }}
-                                                            >
-                                                                {isOverBudget ? '+' : ''}{formatCurrency(totalVariance)}
-                                                            </Typography>
-                                                        </Grid>
-                                                        <Grid item xs={12}>
-                                                            <Box sx={{ mt: 1 }}>
-                                                                <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                                                                    <Typography variant="body2" color="text.secondary">
-                                                                        Overall Progress ({percentSpent.toFixed(0)}%)
-                                                                    </Typography>
-                                                                    <Typography 
-                                                                        variant="body2" 
-                                                                        sx={{ color: progressColor + '.main' }}
-                                                                    >
-                                                                        {isOverBudget ? 'Over Budget' : percentSpent > 85 ? 'Approaching Limit' : 'On Track'}
-                                                                    </Typography>
-                                                                </Box>
-                                                                <LinearProgress 
-                                                                    variant="determinate" 
-                                                                    value={Math.min(percentSpent, 100)}
-                                                                    color={progressColor}
-                                                                    sx={{ mt: 1, height: 10, borderRadius: 5 }}
-                                                                />
-                                                            </Box>
-                                                        </Grid>
-                                                    </Grid>
-                                                </>
-                                            );
-                                        })()}
-                                    </Paper>
-                                </Grid>
-                                
-                                <Grid item xs={12}>
-                                    <Typography variant="h6" gutterBottom>
-                                        Budget Categories
-                                    </Typography>
-                                    <TableContainer component={Paper}>
-                                        <Table>
-                                            <TableHead>
-                                                <TableRow>
-                                                    <TableCell>Category</TableCell>
-                                                    <TableCell align="right">Budgeted</TableCell>
-                                                    <TableCell align="right">Actual</TableCell>
-                                                    <TableCell align="right">Variance</TableCell>
-                                                    <TableCell align="right">Progress</TableCell>
-                                                </TableRow>
-                                            </TableHead>
-                                            <TableBody>
-                                                {budgetDetails.categories.map((category) => {
-                                                    const percentSpent = category.budgeted > 0 ? 
-                                                        (category.actual / category.budgeted) * 100 : 0;
-                                                    const isOverBudget = category.variance > 0;
-                                                    const progressColor = isOverBudget ? 'error' : percentSpent > 85 ? 'warning' : 'success';
-                                                    
-                                                    return (
-                                                        <React.Fragment key={category.category}>
-                                                            <TableRow sx={{ '& > *': { fontWeight: 'bold' } }}>
-                                                                <TableCell>{category.category}</TableCell>
-                                                                <TableCell align="right">{formatCurrency(category.budgeted)}</TableCell>
-                                                                <TableCell align="right">{formatCurrency(category.actual)}</TableCell>
-                                                                <TableCell 
-                                                                    align="right"
-                                                                    sx={{ 
-                                                                        color: isOverBudget ? 'error.main' : 'success.main'
-                                                                    }}
-                                                                >
-                                                                    {isOverBudget ? '+' : ''}{formatCurrency(category.variance)}
-                                                                </TableCell>
-                                                                <TableCell align="right">
-                                                                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                                                                        <Box sx={{ width: '100%', mr: 1 }}>
-                                                                            <LinearProgress 
-                                                                                variant="determinate" 
-                                                                                value={Math.min(percentSpent, 100)}
-                                                                                color={progressColor}
-                                                                            />
-                                                                        </Box>
-                                                                        <Box sx={{ minWidth: 35 }}>
-                                                                            <Typography variant="body2" color="text.secondary">
-                                                                                {percentSpent.toFixed(0)}%
-                                                                            </Typography>
-                                                                        </Box>
-                                                                    </Box>
-                                                                </TableCell>
-                                                            </TableRow>
-                                                            {category.subcategories.map((subcategory) => {
-                                                                const subPercentSpent = subcategory.budgeted > 0 ? 
-                                                                    (subcategory.actual / subcategory.budgeted) * 100 : 0;
-                                                                const subIsOverBudget = subcategory.actual > subcategory.budgeted;
-                                                                const subProgressColor = subIsOverBudget ? 'error' : subPercentSpent > 85 ? 'warning' : 'success';
-                                                                
-                                                                return (
-                                                                    <TableRow key={subcategory.name} sx={{ bgcolor: 'action.hover' }}>
-                                                                        <TableCell sx={{ pl: 4 }}>{subcategory.name}</TableCell>
-                                                                        <TableCell align="right">{formatCurrency(subcategory.budgeted)}</TableCell>
-                                                                        <TableCell align="right">{formatCurrency(subcategory.actual)}</TableCell>
-                                                                        <TableCell 
-                                                                            align="right"
-                                                                            sx={{ 
-                                                                                color: subIsOverBudget ? 'error.main' : 'success.main'
-                                                                            }}
-                                                                        >
-                                                                            {subIsOverBudget ? '+' : ''}{formatCurrency(subcategory.actual - subcategory.budgeted)}
-                                                                        </TableCell>
-                                                                        <TableCell align="right">
-                                                                            <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                                                                                <Box sx={{ width: '100%', mr: 1 }}>
-                                                                                    <LinearProgress 
-                                                                                        variant="determinate" 
-                                                                                        value={Math.min(subPercentSpent, 100)}
-                                                                                        color={subProgressColor}
-                                                                                    />
-                                                                                </Box>
-                                                                                <Box sx={{ minWidth: 35 }}>
-                                                                                    <Typography variant="body2" color="text.secondary">
-                                                                                        {subPercentSpent.toFixed(0)}%
-                                                                                    </Typography>
-                                                                                </Box>
-                                                                            </Box>
-                                                                        </TableCell>
-                                                                    </TableRow>
-                                                                );
-                                                            })}
-                                                        </React.Fragment>
-                                                    );
-                                                })}
-                                            </TableBody>
-                                        </Table>
-                                    </TableContainer>
-                                </Grid>
-                            </Grid>
-                        </DialogContent>
-                        <DialogActions sx={{ p: 2 }}>
-                            <Button 
-                                startIcon={<DuplicateIcon />}
-                                variant="outlined"
-                            >
-                                Duplicate
-                            </Button>
-                            <Button 
-                                startIcon={<EditIcon />}
-                                variant="outlined"
-                                onClick={() => handleEditBudget(budgetDetails.id)}
-                            >
-                                Edit Budget
-                            </Button>
-                            <Button 
-                                onClick={handleCloseBudgetDetails} 
-                                variant="contained"
-                            >
-                                Close
-                            </Button>
-                        </DialogActions>
-                    </>
-                )}
-            </Dialog>
-            
-            {/* New Budget Dialog */}
-            <Dialog
-                open={newBudgetOpen}
-                onClose={handleCloseNewBudget}
-                maxWidth="md"
-                fullWidth
-            >
-                <DialogTitle>
-                    Create New Budget
-                    <IconButton
-                        aria-label="close"
-                        onClick={handleCloseNewBudget}
-                        sx={{
-                            position: 'absolute',
-                            right: 8,
-                            top: 8,
-                        }}
-                    >
-                        <CloseIcon />
-                    </IconButton>
-                </DialogTitle>
-                <DialogContent dividers>
-                    <Alert severity="info" sx={{ mb: 3 }}>
-                        This is a placeholder for the new budget form. In a real application, this would include fields for budget details, categories, and allocations.
-                    </Alert>
-                    <Grid container spacing={3}>
-                        <Grid item xs={12}>
-                            <TextField
-                                label="Budget Name"
-                                fullWidth
-                                required
-                                placeholder="e.g., Q3 2023 Budget"
-                            />
-                        </Grid>
-                        
-                        <Grid item xs={12} sm={6}>
-                            <LocalizationProvider dateAdapter={AdapterDateFns}>
-                                <DatePicker
-                                    label="Start Date"
-                                    slotProps={{ textField: { fullWidth: true, required: true } }}
-                                />
-                            </LocalizationProvider>
-                        </Grid>
-                        
-                        <Grid item xs={12} sm={6}>
-                            <LocalizationProvider dateAdapter={AdapterDateFns}>
-                                <DatePicker
-                                    label="End Date"
-                                    slotProps={{ textField: { fullWidth: true, required: true } }}
-                                />
-                            </LocalizationProvider>
-                        </Grid>
-                        
-                        <Grid item xs={12}>
-                            <FormControl fullWidth>
-                                <InputLabel>Status</InputLabel>
-                                <Select
-                                    label="Status"
-                                    defaultValue="planned"
-                                >
-                                    <MenuItem value="planned">Planned</MenuItem>
-                                    <MenuItem value="active">Active</MenuItem>
-                                </Select>
-                            </FormControl>
-                        </Grid>
-                        
-                        <Grid item xs={12}>
-                            <TextField
-                                label="Notes"
-                                fullWidth
-                                multiline
-                                rows={4}
-                                placeholder="Add any notes or details about this budget"
-                            />
-                        </Grid>
-                        
-                        <Grid item xs={12}>
-                            <Divider sx={{ my: 1 }} />
-                            <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>
-                                Budget Categories
-                            </Typography>
-                            <Alert severity="info">
-                                You'll be able to add and configure budget categories in the next step.
-                            </Alert>
-                        </Grid>
-                    </Grid>
-                </DialogContent>
-                <DialogActions>
-                    <Button onClick={handleCloseNewBudget}>
-                        Cancel
-                    </Button>
-                    <Button variant="contained">
                         Create Budget
                     </Button>
-                </DialogActions>
-            </Dialog>
-        </Box>
+                </Box>
+                
+                {/* Budget Tab Navigation */}
+                <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+                    <Tabs value={tabValue} onChange={handleTabChange} aria-label="budget tabs">
+                        <Tab label={`Active Budgets (${activeBudgets.length})`} />
+                        <Tab label={`Planned Budgets (${plannedBudgets.length})`} />
+                        <Tab label={`Past Budgets (${pastBudgets.length})`} />
+                    </Tabs>
+                </Box>
+                
+                {/* Active Budgets */}
+                <TabPanel value={tabValue} index={0}>
+                    {loading ? (
+                        <Typography>Loading budgets...</Typography>
+                    ) : activeBudgets.length === 0 ? (
+                        <Alert 
+                            severity="info"
+                            action={
+                                <Button color="inherit" size="small" onClick={handleNewBudget}>
+                                    Create Now
+                                </Button>
+                            }
+                        >
+                            No active budgets found. Create a new budget to get started.
+                        </Alert>
+                    ) : (
+                        <Grid container spacing={3}>
+                            {activeBudgets.map((budget) => (
+                                <Grid item xs={12} sm={6} md={4} key={budget.id}>
+                                    {renderBudgetCard(budget)}
+                                </Grid>
+                            ))}
+                        </Grid>
+                    )}
+                </TabPanel>
+                
+                {/* Planned Budgets */}
+                <TabPanel value={tabValue} index={1}>
+                    {loading ? (
+                        <Typography>Loading budgets...</Typography>
+                    ) : plannedBudgets.length === 0 ? (
+                        <Alert 
+                            severity="info"
+                            action={
+                                <Button color="inherit" size="small" onClick={handleNewBudget}>
+                                    Create Now
+                                </Button>
+                            }
+                        >
+                            No planned budgets found. Plan ahead by creating a future budget.
+                        </Alert>
+                    ) : (
+                        <Grid container spacing={3}>
+                            {plannedBudgets.map((budget) => (
+                                <Grid item xs={12} sm={6} md={4} key={budget.id}>
+                                    {renderBudgetCard(budget)}
+                                </Grid>
+                            ))}
+                        </Grid>
+                    )}
+                </TabPanel>
+                
+                {/* Past Budgets */}
+                <TabPanel value={tabValue} index={2}>
+                    {loading ? (
+                        <Typography>Loading budgets...</Typography>
+                    ) : pastBudgets.length === 0 ? (
+                        <Alert severity="info">
+                            No past budgets found.
+                        </Alert>
+                    ) : (
+                        <Grid container spacing={3}>
+                            {pastBudgets.map((budget) => (
+                                <Grid item xs={12} sm={6} md={4} key={budget.id}>
+                                    {renderBudgetCard(budget)}
+                                </Grid>
+                            ))}
+                        </Grid>
+                    )}
+                </TabPanel>
+                
+                {/* Fixed Action Button */}
+                <Tooltip title="Create New Budget">
+                    <Fab 
+                        color="primary" 
+                        aria-label="add"
+                        sx={{ position: 'fixed', bottom: 32, right: 32 }}
+                        onClick={handleNewBudget}
+                    >
+                        <AddIcon />
+                    </Fab>
+                </Tooltip>
+                
+                {/* Budget Details Dialog */}
+                <Dialog
+                    open={budgetDetailsOpen}
+                    onClose={handleCloseBudgetDetails}
+                    maxWidth="lg"
+                    fullWidth
+                >
+                    {budgetDetails && (
+                        <>
+                            <DialogTitle sx={{ 
+                                bgcolor: 'primary.light',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'space-between'
+                            }}>
+                                <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                                    <MoneyIcon sx={{ mr: 1 }} />
+                                    <Typography variant="h6">
+                                        {budgetDetails.name}
+                                    </Typography>
+                                    <Chip 
+                                        label={budgetDetails.status.charAt(0).toUpperCase() + budgetDetails.status.slice(1)}
+                                        size="small"
+                                        color={budgetDetails.status === 'active' ? 'primary' : 
+                                            budgetDetails.status === 'planned' ? 'info' : 'default'}
+                                        sx={{ ml: 2 }}
+                                    />
+                                </Box>
+                                <IconButton onClick={handleCloseBudgetDetails}>
+                                    <CloseIcon />
+                                </IconButton>
+                            </DialogTitle>
+                            <DialogContent dividers>
+                                <Grid container spacing={3}>
+                                    <Grid item xs={12} md={4}>
+                                        <Stack spacing={2}>
+                                            <Box>
+                                                <Typography variant="body2" color="text.secondary" gutterBottom>
+                                                    Budget Period
+                                                </Typography>
+                                                <Typography variant="body1">
+                                                    {format(new Date(budgetDetails.startDate), 'MMMM dd, yyyy')} - {format(new Date(budgetDetails.endDate), 'MMMM dd, yyyy')}
+                                                </Typography>
+                                            </Box>
+                                            
+                                            <Box>
+                                                <Typography variant="body2" color="text.secondary" gutterBottom>
+                                                    Created By
+                                                </Typography>
+                                                <Typography variant="body1">
+                                                    {budgetDetails.createdBy} on {format(new Date(budgetDetails.createdAt), 'MMMM dd, yyyy')}
+                                                </Typography>
+                                            </Box>
+                                            
+                                            {budgetDetails.notes && (
+                                                <Box>
+                                                    <Typography variant="body2" color="text.secondary" gutterBottom>
+                                                        Notes
+                                                    </Typography>
+                                                    <Typography variant="body1">
+                                                        {budgetDetails.notes}
+                                                    </Typography>
+                                                </Box>
+                                            )}
+                                        </Stack>
+                                    </Grid>
+                                    
+                                    <Grid item xs={12} md={8}>
+                                        <Paper sx={{ p: 2, mb: 3 }}>
+                                            {(() => {
+                                                const { totalBudgeted, totalActual, totalVariance, percentSpent } = calculateTotals(budgetDetails);
+                                                const isOverBudget = totalVariance > 0;
+                                                const progressColor = isOverBudget ? 'error' : percentSpent > 85 ? 'warning' : 'success';
+                                                
+                                                return (
+                                                    <>
+                                                        <Typography variant="h6" gutterBottom>
+                                                            Budget Summary
+                                                        </Typography>
+                                                        <Grid container spacing={3}>
+                                                            <Grid item xs={12} sm={4}>
+                                                                <Typography variant="body2" color="text.secondary">
+                                                                    Total Budgeted
+                                                                </Typography>
+                                                                <Typography variant="h5" sx={{ fontWeight: 'medium' }}>
+                                                                    {formatCurrency(totalBudgeted)}
+                                                                </Typography>
+                                                            </Grid>
+                                                            <Grid item xs={12} sm={4}>
+                                                                <Typography variant="body2" color="text.secondary">
+                                                                    Total Spent
+                                                                </Typography>
+                                                                <Typography variant="h5" sx={{ fontWeight: 'medium' }}>
+                                                                    {formatCurrency(totalActual)}
+                                                                </Typography>
+                                                            </Grid>
+                                                            <Grid item xs={12} sm={4}>
+                                                                <Typography variant="body2" color="text.secondary">
+                                                                    Variance
+                                                                </Typography>
+                                                                <Typography 
+                                                                    variant="h5" 
+                                                                    sx={{ 
+                                                                        color: isOverBudget ? 'error.main' : 'success.main',
+                                                                        fontWeight: 'medium'
+                                                                    }}
+                                                                >
+                                                                    {isOverBudget ? '+' : ''}{formatCurrency(totalVariance)}
+                                                                </Typography>
+                                                            </Grid>
+                                                            <Grid item xs={12}>
+                                                                <Box sx={{ mt: 1 }}>
+                                                                    <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                                                                        <Typography variant="body2" color="text.secondary">
+                                                                            Overall Progress ({percentSpent.toFixed(0)}%)
+                                                                        </Typography>
+                                                                        <Typography 
+                                                                            variant="body2" 
+                                                                            sx={{ color: progressColor + '.main' }}
+                                                                        >
+                                                                            {isOverBudget ? 'Over Budget' : percentSpent > 85 ? 'Approaching Limit' : 'On Track'}
+                                                                        </Typography>
+                                                                    </Box>
+                                                                    <LinearProgress 
+                                                                        variant="determinate" 
+                                                                        value={Math.min(percentSpent, 100)}
+                                                                        color={progressColor}
+                                                                        sx={{ mt: 1, height: 10, borderRadius: 5 }}
+                                                                    />
+                                                                </Box>
+                                                            </Grid>
+                                                        </Grid>
+                                                    </>
+                                                );
+                                            })()}
+                                        </Paper>
+                                    </Grid>
+                                    
+                                    <Grid item xs={12}>
+                                        <Typography variant="h6" gutterBottom>
+                                            Budget Categories
+                                        </Typography>
+                                        <TableContainer component={Paper}>
+                                            <Table>
+                                                <TableHead>
+                                                    <TableRow>
+                                                        <TableCell>Category</TableCell>
+                                                        <TableCell align="right">Budgeted</TableCell>
+                                                        <TableCell align="right">Actual</TableCell>
+                                                        <TableCell align="right">Variance</TableCell>
+                                                        <TableCell align="right">Progress</TableCell>
+                                                    </TableRow>
+                                                </TableHead>
+                                                <TableBody>
+                                                    {budgetDetails.categories.map((category) => {
+                                                        const percentSpent = category.budgeted > 0 ? 
+                                                            (category.actual / category.budgeted) * 100 : 0;
+                                                        const isOverBudget = category.variance > 0;
+                                                        const progressColor = isOverBudget ? 'error' : percentSpent > 85 ? 'warning' : 'success';
+                                                        
+                                                        return (
+                                                            <React.Fragment key={category.category}>
+                                                                <TableRow sx={{ '& > *': { fontWeight: 'bold' } }}>
+                                                                    <TableCell>{category.category}</TableCell>
+                                                                    <TableCell align="right">{formatCurrency(category.budgeted)}</TableCell>
+                                                                    <TableCell align="right">{formatCurrency(category.actual)}</TableCell>
+                                                                    <TableCell 
+                                                                        align="right"
+                                                                        sx={{ 
+                                                                            color: isOverBudget ? 'error.main' : 'success.main'
+                                                                        }}
+                                                                    >
+                                                                        {isOverBudget ? '+' : ''}{formatCurrency(category.variance)}
+                                                                    </TableCell>
+                                                                    <TableCell align="right">
+                                                                        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                                                                            <Box sx={{ width: '100%', mr: 1 }}>
+                                                                                <LinearProgress 
+                                                                                    variant="determinate" 
+                                                                                    value={Math.min(percentSpent, 100)}
+                                                                                    color={progressColor}
+                                                                                />
+                                                                            </Box>
+                                                                            <Box sx={{ minWidth: 35 }}>
+                                                                                <Typography variant="body2" color="text.secondary">
+                                                                                    {percentSpent.toFixed(0)}%
+                                                                                </Typography>
+                                                                            </Box>
+                                                                        </Box>
+                                                                    </TableCell>
+                                                                </TableRow>
+                                                                {category.subcategories.map((subcategory) => {
+                                                                    const subPercentSpent = subcategory.budgeted > 0 ? 
+                                                                        (subcategory.actual / subcategory.budgeted) * 100 : 0;
+                                                                    const subIsOverBudget = subcategory.actual > subcategory.budgeted;
+                                                                    const subProgressColor = subIsOverBudget ? 'error' : subPercentSpent > 85 ? 'warning' : 'success';
+                                                                    
+                                                                    return (
+                                                                        <TableRow key={subcategory.name} sx={{ bgcolor: 'action.hover' }}>
+                                                                            <TableCell sx={{ pl: 4 }}>{subcategory.name}</TableCell>
+                                                                            <TableCell align="right">{formatCurrency(subcategory.budgeted)}</TableCell>
+                                                                            <TableCell align="right">{formatCurrency(subcategory.actual)}</TableCell>
+                                                                            <TableCell 
+                                                                                align="right"
+                                                                                sx={{ 
+                                                                                    color: subIsOverBudget ? 'error.main' : 'success.main'
+                                                                                }}
+                                                                            >
+                                                                                {subIsOverBudget ? '+' : ''}{formatCurrency(subcategory.actual - subcategory.budgeted)}
+                                                                            </TableCell>
+                                                                            <TableCell align="right">
+                                                                                <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                                                                                    <Box sx={{ width: '100%', mr: 1 }}>
+                                                                                        <LinearProgress 
+                                                                                            variant="determinate" 
+                                                                                            value={Math.min(subPercentSpent, 100)}
+                                                                                            color={subProgressColor}
+                                                                                        />
+                                                                                    </Box>
+                                                                                    <Box sx={{ minWidth: 35 }}>
+                                                                                        <Typography variant="body2" color="text.secondary">
+                                                                                            {subPercentSpent.toFixed(0)}%
+                                                                                        </Typography>
+                                                                                    </Box>
+                                                                                </Box>
+                                                                            </TableCell>
+                                                                        </TableRow>
+                                                                    );
+                                                                })}
+                                                            </React.Fragment>
+                                                        );
+                                                    })}
+                                                </TableBody>
+                                            </Table>
+                                        </TableContainer>
+                                    </Grid>
+                                </Grid>
+                            </DialogContent>
+                            <DialogActions sx={{ p: 2 }}>
+                                <Button 
+                                    startIcon={<DuplicateIcon />}
+                                    variant="outlined"
+                                >
+                                    Duplicate
+                                </Button>
+                                <Button 
+                                    startIcon={<EditIcon />}
+                                    variant="outlined"
+                                    onClick={() => handleEditBudget(budgetDetails.id)}
+                                >
+                                    Edit Budget
+                                </Button>
+                                <Button 
+                                    onClick={handleCloseBudgetDetails} 
+                                    variant="contained"
+                                >
+                                    Close
+                                </Button>
+                            </DialogActions>
+                        </>
+                    )}
+                </Dialog>
+                
+                {/* New Budget Dialog */}
+                <Dialog
+                    open={newBudgetOpen}
+                    onClose={handleCloseNewBudget}
+                    maxWidth="md"
+                    fullWidth
+                >
+                    <DialogTitle>
+                        Create New Budget
+                        <IconButton
+                            aria-label="close"
+                            onClick={handleCloseNewBudget}
+                            sx={{
+                                position: 'absolute',
+                                right: 8,
+                                top: 8,
+                            }}
+                        >
+                            <CloseIcon />
+                        </IconButton>
+                    </DialogTitle>
+                    <DialogContent dividers>
+                        <Alert severity="info" sx={{ mb: 3 }}>
+                            This is a placeholder for the new budget form. In a real application, this would include fields for budget details, categories, and allocations.
+                        </Alert>
+                        <Grid container spacing={3}>
+                            <Grid item xs={12}>
+                                <TextField
+                                    label="Budget Name"
+                                    fullWidth
+                                    required
+                                    placeholder="e.g., Q3 2023 Budget"
+                                />
+                            </Grid>
+                            
+                            <Grid item xs={12} sm={6}>
+                                <LocalizationProvider dateAdapter={AdapterDateFns}>
+                                    <DatePicker
+                                        label="Start Date"
+                                        slotProps={{ textField: { fullWidth: true, required: true } }}
+                                    />
+                                </LocalizationProvider>
+                            </Grid>
+                            
+                            <Grid item xs={12} sm={6}>
+                                <LocalizationProvider dateAdapter={AdapterDateFns}>
+                                    <DatePicker
+                                        label="End Date"
+                                        slotProps={{ textField: { fullWidth: true, required: true } }}
+                                    />
+                                </LocalizationProvider>
+                            </Grid>
+                            
+                            <Grid item xs={12}>
+                                <FormControl fullWidth>
+                                    <InputLabel>Status</InputLabel>
+                                    <Select
+                                        label="Status"
+                                        defaultValue="planned"
+                                    >
+                                        <MenuItem value="planned">Planned</MenuItem>
+                                        <MenuItem value="active">Active</MenuItem>
+                                    </Select>
+                                </FormControl>
+                            </Grid>
+                            
+                            <Grid item xs={12}>
+                                <TextField
+                                    label="Notes"
+                                    fullWidth
+                                    multiline
+                                    rows={4}
+                                    placeholder="Add any notes or details about this budget"
+                                />
+                            </Grid>
+                            
+                            <Grid item xs={12}>
+                                <Divider sx={{ my: 1 }} />
+                                <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>
+                                    Budget Categories
+                                </Typography>
+                                <Alert severity="info">
+                                    You'll be able to add and configure budget categories in the next step.
+                                </Alert>
+                            </Grid>
+                        </Grid>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={handleCloseNewBudget}>
+                            Cancel
+                        </Button>
+                        <Button variant="contained">
+                            Create Budget
+                        </Button>
+                    </DialogActions>
+                </Dialog>
+            </Container>
+        </Layout>
     );
 };
 

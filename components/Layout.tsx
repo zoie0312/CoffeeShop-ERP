@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, MouseEvent } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -8,6 +8,7 @@ import {
   Avatar,
   Badge,
   Box,
+  Button,
   CssBaseline,
   Divider,
   Drawer,
@@ -17,7 +18,11 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
+  Menu,
+  MenuItem,
+  Stack,
   Toolbar,
+  Tooltip,
   Typography,
   useMediaQuery,
   useTheme
@@ -33,7 +38,8 @@ import {
   MenuBook as MenuBookIcon,
   AttachMoney as AttachMoneyIcon,
   Notifications as NotificationsIcon,
-  Menu as MenuIcon
+  Menu as MenuIcon,
+  KeyboardArrowDown as KeyboardArrowDownIcon
 } from '@mui/icons-material';
 
 // Drawer width
@@ -44,9 +50,30 @@ const Layout: React.FC<LayoutProps> = ({ children, title }) => {
   const router = useRouter();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const [mobileOpen, setMobileOpen] = useState(false);
-
+  
+  // State for dropdown menus
+  const [anchorElReports, setAnchorElReports] = useState<null | HTMLElement>(null);
+  const [anchorElRecipes, setAnchorElRecipes] = useState<null | HTMLElement>(null);
+  
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
+  };
+
+  // Dropdown handlers
+  const handleReportsClick = (event: MouseEvent<HTMLElement>) => {
+    setAnchorElReports(event.currentTarget);
+  };
+  
+  const handleReportsClose = () => {
+    setAnchorElReports(null);
+  };
+  
+  const handleRecipesClick = (event: MouseEvent<HTMLElement>) => {
+    setAnchorElRecipes(event.currentTarget);
+  };
+  
+  const handleRecipesClose = () => {
+    setAnchorElRecipes(null);
   };
 
   // Get current date formatted as "Tuesday, April 18, 2023"
@@ -88,6 +115,7 @@ const Layout: React.FC<LayoutProps> = ({ children, title }) => {
     { text: 'Finance', icon: <AttachMoneyIcon />, path: '/finance' },
   ];
 
+  // Mobile drawer content
   const drawer = (
     <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
       <Box
@@ -183,7 +211,7 @@ const Layout: React.FC<LayoutProps> = ({ children, title }) => {
   );
 
   return (
-    <Box sx={{ display: 'flex', minHeight: '100vh' }}>
+    <Box sx={{ display: 'flex', minHeight: '100vh', flexDirection: 'column' }}>
       <CssBaseline />
       
       <Head>
@@ -194,59 +222,230 @@ const Layout: React.FC<LayoutProps> = ({ children, title }) => {
       <AppBar
         position="fixed"
         sx={{
-          width: { md: `calc(100% - ${drawerWidth}px)` },
-          ml: { md: `${drawerWidth}px` },
           boxShadow: 1,
           bgcolor: 'background.paper',
-          color: 'text.primary'
+          color: 'text.primary',
+          zIndex: (theme) => theme.zIndex.drawer + 1,
         }}
       >
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { md: 'none' } }}
+        <Toolbar sx={{ height: { md: 72 } }}>
+          {/* Left section - mobile menu button, app title and date */}
+          <Box 
+            sx={{ 
+              display: 'flex', 
+              alignItems: 'center',
+              //borderRight: { md: `1px solid ${theme.palette.divider}` },
+              pr: { md: 3 },
+              minWidth: { md: '200px' }
+            }}
           >
-            <MenuIcon />
-          </IconButton>
-          
-          <Typography variant="body2" color="text.secondary" sx={{ flexGrow: 1 }}>
-            {currentDate}
-          </Typography>
-          
-          <IconButton color="inherit" size="large" sx={{ mr: 1 }}>
-            <Badge badgeContent={3} color="error">
-              <NotificationsIcon />
-            </Badge>
-          </IconButton>
-          
-          <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            <Avatar
-              sx={{
-                width: 32,
-                height: 32,
-                bgcolor: theme.palette.primary.light,
-                color: theme.palette.primary.contrastText,
-                mr: 1
-              }}
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              edge="start"
+              onClick={handleDrawerToggle}
+              sx={{ mr: 2, display: { md: 'none' } }}
             >
-              A
-            </Avatar>
-            <Typography variant="body2" sx={{ display: { xs: 'none', sm: 'block' } }}>
-              Admin User
-            </Typography>
+              <MenuIcon />
+            </IconButton>
+            
+            <Box sx={{ display: 'flex', flexDirection: 'column', mr: { md: 4 } }}>
+              <Typography variant="h6" component="h1" sx={{ fontWeight: 700, display: 'flex', alignItems: 'center' }}>
+                Bean Counter
+              </Typography>
+              <Typography variant="caption" color="text.secondary" sx={{ display: { xs: 'none', md: 'block' } }}>
+                {currentDate}
+              </Typography>
+            </Box>
+          </Box>
+          
+          {/* Middle section - main navigation (desktop only) */}
+          <Stack 
+            direction="row" 
+            spacing={1} 
+            divider={
+              <Divider 
+                orientation="vertical"
+                flexItem
+              />
+            }
+            sx={{ 
+              display: { xs: 'none', md: 'flex' },
+              flexGrow: 1,
+              justifyContent: 'center',
+              alignItems: 'center'
+            }}
+          >
+            {menuItems.map((item) => (
+              <React.Fragment key={item.text}>
+                {item.subItems ? (
+                  <>
+                    <Button
+                      color="inherit"
+                      startIcon={item.icon}
+                      endIcon={<KeyboardArrowDownIcon />}
+                      onClick={item.text === 'Reports' ? handleReportsClick : handleRecipesClick}
+                      sx={{
+                        borderBottom: '2px solid transparent',
+                        borderBottomColor: router.pathname === item.path || 
+                          (item.subItems && item.subItems.some(subItem => router.pathname === subItem.path)) 
+                          ? theme.palette.primary.main 
+                          : 'transparent',
+                        color: router.pathname === item.path || 
+                          (item.subItems && item.subItems.some(subItem => router.pathname === subItem.path))
+                          ? theme.palette.primary.main 
+                          : theme.palette.text.primary,
+                        textTransform: 'none',
+                        px: 2,
+                        height: '100%',
+                        borderRadius: 0
+                      }}
+                    >
+                      {item.text}
+                    </Button>
+                    
+                    {/* Dropdown menu for Reports */}
+                    {item.text === 'Reports' && (
+                      <Menu
+                        anchorEl={anchorElReports}
+                        open={Boolean(anchorElReports)}
+                        onClose={handleReportsClose}
+                        MenuListProps={{
+                          'aria-labelledby': 'reports-button',
+                        }}
+                        sx={{
+                          mt: 1,
+                          '& .MuiPaper-root': {
+                            border: `1px solid ${theme.palette.divider}`,
+                            boxShadow: theme.shadows[3]
+                          }
+                        }}
+                      >
+                        {item.subItems.map((subItem) => (
+                          <MenuItem 
+                            key={subItem.text} 
+                            component={Link}
+                            href={subItem.path}
+                            onClick={handleReportsClose}
+                            selected={router.pathname === subItem.path}
+                            sx={{
+                              py: 1.2,
+                              minWidth: 180,
+                              color: router.pathname === subItem.path ? theme.palette.primary.main : 'inherit'
+                            }}
+                          >
+                            {subItem.text}
+                          </MenuItem>
+                        ))}
+                      </Menu>
+                    )}
+                    
+                    {/* Dropdown menu for Recipes & Menu */}
+                    {item.text === 'Recipes & Menu' && (
+                      <Menu
+                        anchorEl={anchorElRecipes}
+                        open={Boolean(anchorElRecipes)}
+                        onClose={handleRecipesClose}
+                        MenuListProps={{
+                          'aria-labelledby': 'recipes-button',
+                        }}
+                        sx={{
+                          mt: 1,
+                          '& .MuiPaper-root': {
+                            border: `1px solid ${theme.palette.divider}`,
+                            boxShadow: theme.shadows[3]
+                          }
+                        }}
+                      >
+                        {item.subItems.map((subItem) => (
+                          <MenuItem 
+                            key={subItem.text} 
+                            component={Link}
+                            href={subItem.path}
+                            onClick={handleRecipesClose}
+                            selected={router.pathname === subItem.path}
+                            sx={{
+                              py: 1.2,
+                              minWidth: 180,
+                              color: router.pathname === subItem.path ? theme.palette.primary.main : 'inherit'
+                            }}
+                          >
+                            {subItem.text}
+                          </MenuItem>
+                        ))}
+                      </Menu>
+                    )}
+                  </>
+                ) : (
+                  <Button
+                    component={Link}
+                    href={item.path}
+                    color="inherit"
+                    startIcon={item.icon}
+                    sx={{
+                      borderBottom: '2px solid transparent',
+                      borderBottomColor: router.pathname === item.path ? theme.palette.primary.main : 'transparent',
+                      color: router.pathname === item.path ? theme.palette.primary.main : theme.palette.text.primary,
+                      textTransform: 'none',
+                      px: 2,
+                      height: '100%',
+                      borderRadius: 0
+                    }}
+                  >
+                    {item.text}
+                  </Button>
+                )}
+              </React.Fragment>
+            ))}
+          </Stack>
+          
+          {/* Right section - notifications and user profile */}
+          <Box 
+            sx={{ 
+              display: 'flex', 
+              alignItems: 'center',
+              pl: { md: 3 },
+              minWidth: { md: '180px' },
+              justifyContent: 'flex-end'
+            }}
+          >
+            <IconButton color="inherit" size="large" sx={{ mr: 1 }}>
+              <Badge badgeContent={3} color="error">
+                <NotificationsIcon />
+              </Badge>
+            </IconButton>
+            
+            <Tooltip title="Admin User">
+              <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                <Avatar
+                  sx={{
+                    width: 32,
+                    height: 32,
+                    bgcolor: theme.palette.primary.light,
+                    color: theme.palette.primary.contrastText,
+                    mr: 1
+                  }}
+                >
+                  A
+                </Avatar>
+                <Typography variant="body2" sx={{ display: { xs: 'none', sm: 'block' } }}>
+                  Admin User
+                </Typography>
+              </Box>
+            </Tooltip>
           </Box>
         </Toolbar>
       </AppBar>
       
-      {/* Sidebar / Drawer */}
+      {/* Mobile Drawer */}
       <Box
         component="nav"
-        sx={{ width: { md: drawerWidth }, flexShrink: { md: 0 } }}
+        sx={{ 
+          width: { xs: drawerWidth },
+          flexShrink: { xs: 0 },
+          display: { md: 'none' }
+        }}
       >
-        {/* Mobile Drawer */}
         <Drawer
           variant="temporary"
           open={mobileOpen}
@@ -259,22 +458,6 @@ const Layout: React.FC<LayoutProps> = ({ children, title }) => {
         >
           {drawer}
         </Drawer>
-        
-        {/* Desktop Drawer */}
-        <Drawer
-          variant="permanent"
-          sx={{
-            display: { xs: 'none', md: 'block' },
-            '& .MuiDrawer-paper': {
-              boxSizing: 'border-box',
-              width: drawerWidth,
-              borderRight: `1px solid ${theme.palette.divider}`,
-            },
-          }}
-          open
-        >
-          {drawer}
-        </Drawer>
       </Box>
       
       {/* Main Content */}
@@ -283,14 +466,14 @@ const Layout: React.FC<LayoutProps> = ({ children, title }) => {
         sx={{
           flexGrow: 1,
           p: 3,
-          width: { md: `calc(100% - ${drawerWidth}px)` },
+          width: '100%',
           bgcolor: 'background.default',
           minHeight: '100vh',
-          pt: { xs: 10, md: 8 }
+          mt: { xs: 8, md: 9 }
         }}
       >
         {title && (
-          <Typography variant="h4" component="h1" gutterBottom>
+          <Typography variant="h4" component="h1" gutterBottom sx={{ pt: { md: 2 } }}>
             {title}
           </Typography>
         )}

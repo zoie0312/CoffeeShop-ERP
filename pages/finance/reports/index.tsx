@@ -20,7 +20,7 @@ import {
     Stack,
     Alert,
     Tooltip,
-    Link,
+    Link as MuiLink,
     ButtonGroup,
     ToggleButtonGroup,
     ToggleButton,
@@ -28,7 +28,8 @@ import {
     ListItem,
     ListItemIcon,
     ListItemText,
-    ListItemButton
+    ListItemButton,
+    Container
 } from '@mui/material';
 import {
     PieChart as PieChartIcon,
@@ -54,6 +55,8 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { format, subMonths, startOfMonth, endOfMonth, parseISO } from 'date-fns';
+import NextLink from 'next/link';
+import Layout from '../../../components/Layout';
 
 // Chart.js imports
 import {
@@ -449,313 +452,321 @@ const ReportsPage: React.FC = () => {
     const reportInfo = getReportInfo();
     
     return (
-        <Box sx={{ padding: 3 }}>
-            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 4 }}>
-                <Typography variant="h4" component="h1">
-                    Financial Reports
-                </Typography>
-                <Button 
-                    variant="contained" 
-                    color="primary" 
-                    startIcon={<DownloadIcon />}
-                    disabled={!reportGenerated}
-                >
-                    Export Report
-                </Button>
-            </Box>
-            
-            {/* Report Type Tabs */}
-            <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                <Tabs value={tabValue} onChange={handleTabChange} aria-label="report tabs">
-                    <Tab label="Standard Reports" />
-                    <Tab label="Custom Reports" />
-                    <Tab label="Saved Reports" />
-                </Tabs>
-            </Box>
-            
-            {/* Standard Reports */}
-            <TabPanel value={tabValue} index={0}>
-                <Grid container spacing={3}>
-                    {/* Report Selection Sidebar */}
-                    <Grid item xs={12} md={3}>
-                        <Paper sx={{ p: 2, height: '100%' }}>
-                            <Typography variant="h6" gutterBottom>
-                                Available Reports
-                            </Typography>
-                            <List>
-                                {availableReports.map((report) => (
-                                    <ListItemButton 
-                                        key={report.id}
-                                        selected={selectedReportType === report.id}
-                                        onClick={() => setSelectedReportType(report.id)}
-                                        sx={{
-                                            borderRadius: 1,
-                                            mb: 1,
-                                            '&.Mui-selected': {
-                                                backgroundColor: 'primary.light',
-                                                '&:hover': {
-                                                    backgroundColor: 'primary.light',
-                                                },
-                                            },
-                                        }}
-                                    >
-                                        <ListItemIcon>
-                                            {report.icon}
-                                        </ListItemIcon>
-                                        <ListItemText 
-                                            primary={report.name} 
-                                            secondary={report.description}
-                                            primaryTypographyProps={{
-                                                fontWeight: selectedReportType === report.id ? 'bold' : 'regular',
-                                            }}
-                                        />
-                                    </ListItemButton>
-                                ))}
-                            </List>
-                            
-                            <Divider sx={{ my: 2 }} />
-                            
-                            <Typography variant="subtitle2" gutterBottom>
-                                Report Period
-                            </Typography>
-                            
-                            <ToggleButtonGroup
-                                value={timeFrame}
-                                exclusive
-                                onChange={handleTimeFrameChange}
-                                size="small"
-                                fullWidth
-                                sx={{ mb: 2 }}
-                            >
-                                <ToggleButton value="weekly">Weekly</ToggleButton>
-                                <ToggleButton value="monthly">Monthly</ToggleButton>
-                                <ToggleButton value="quarterly">Quarterly</ToggleButton>
-                                <ToggleButton value="yearly">Yearly</ToggleButton>
-                            </ToggleButtonGroup>
-                            
-                            <Stack spacing={2}>
-                                <LocalizationProvider dateAdapter={AdapterDateFns}>
-                                    <DatePicker
-                                        label="Start Date"
-                                        value={startDate}
-                                        onChange={(newValue) => {
-                                            if (newValue) {
-                                                setStartDate(newValue);
-                                                setReportGenerated(false);
-                                            }
-                                        }}
-                                        slotProps={{ textField: { size: 'small', fullWidth: true } }}
-                                    />
-                                    <DatePicker
-                                        label="End Date"
-                                        value={endDate}
-                                        onChange={(newValue) => {
-                                            if (newValue) {
-                                                setEndDate(newValue);
-                                                setReportGenerated(false);
-                                            }
-                                        }}
-                                        slotProps={{ textField: { size: 'small', fullWidth: true } }}
-                                    />
-                                </LocalizationProvider>
-                            </Stack>
-                            
-                            <Button
-                                variant="contained"
-                                color="primary"
-                                fullWidth
-                                sx={{ mt: 2 }}
-                                onClick={handleGenerateReport}
-                                disabled={loading}
-                            >
-                                {loading ? 'Generating...' : 'Generate Report'}
-                            </Button>
-                        </Paper>
-                    </Grid>
+        <Layout title="Financial Reports">
+            <Container maxWidth="lg" sx={{ mt: 4, mb: 8 }}>
+                <Box sx={{ padding: 3 }}>
+                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 4 }}>
+                        <Box>
+                            <NextLink href="/finance" passHref>
+                                <Button variant="text" component="a" sx={{ mt: -2, mb: 2 }}>
+                                    ← Back to Finance Dashboard
+                                </Button>
+                            </NextLink>
+                        </Box>
+                        <Button 
+                            variant="contained" 
+                            color="primary" 
+                            startIcon={<DownloadIcon />}
+                            disabled={!reportGenerated}
+                        >
+                            Export Report
+                        </Button>
+                    </Box>
                     
-                    {/* Report Content */}
-                    <Grid item xs={12} md={9}>
-                        <Paper sx={{ p: 3 }}>
-                            {!reportGenerated ? (
-                                <Box sx={{ 
-                                    display: 'flex', 
-                                    flexDirection: 'column', 
-                                    alignItems: 'center', 
-                                    justifyContent: 'center',
-                                    minHeight: 400
-                                }}>
-                                    <ReportIcon sx={{ fontSize: 60, color: 'text.secondary', mb: 2 }} />
-                                    <Typography variant="h6" color="text.secondary" gutterBottom>
-                                        No Report Generated
+                    {/* Report Type Tabs */}
+                    <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+                        <Tabs value={tabValue} onChange={handleTabChange} aria-label="report tabs">
+                            <Tab label="Standard Reports" />
+                            <Tab label="Custom Reports" />
+                            <Tab label="Saved Reports" />
+                        </Tabs>
+                    </Box>
+                    
+                    {/* Standard Reports */}
+                    <TabPanel value={tabValue} index={0}>
+                        <Grid container spacing={3}>
+                            {/* Report Selection Sidebar */}
+                            <Grid item xs={12} md={3}>
+                                <Paper sx={{ p: 2, height: '100%' }}>
+                                    <Typography variant="h6" gutterBottom>
+                                        Available Reports
                                     </Typography>
-                                    <Typography variant="body2" color="text.secondary" align="center">
-                                        Select your report parameters and click "Generate Report" to view your financial data.
+                                    <List>
+                                        {availableReports.map((report) => (
+                                            <ListItemButton 
+                                                key={report.id}
+                                                selected={selectedReportType === report.id}
+                                                onClick={() => setSelectedReportType(report.id)}
+                                                sx={{
+                                                    borderRadius: 1,
+                                                    mb: 1,
+                                                    '&.Mui-selected': {
+                                                        backgroundColor: 'primary.light',
+                                                        '&:hover': {
+                                                            backgroundColor: 'primary.light',
+                                                        },
+                                                    },
+                                                }}
+                                            >
+                                                <ListItemIcon>
+                                                    {report.icon}
+                                                </ListItemIcon>
+                                                <ListItemText 
+                                                    primary={report.name} 
+                                                    secondary={report.description}
+                                                    primaryTypographyProps={{
+                                                        fontWeight: selectedReportType === report.id ? 'bold' : 'regular',
+                                                    }}
+                                                />
+                                            </ListItemButton>
+                                        ))}
+                                    </List>
+                                    
+                                    <Divider sx={{ my: 2 }} />
+                                    
+                                    <Typography variant="subtitle2" gutterBottom>
+                                        Report Period
                                     </Typography>
+                                    
+                                    <ToggleButtonGroup
+                                        value={timeFrame}
+                                        exclusive
+                                        onChange={handleTimeFrameChange}
+                                        size="small"
+                                        fullWidth
+                                        sx={{ mb: 2 }}
+                                    >
+                                        <ToggleButton value="weekly">Weekly</ToggleButton>
+                                        <ToggleButton value="monthly">Monthly</ToggleButton>
+                                        <ToggleButton value="quarterly">Quarterly</ToggleButton>
+                                        <ToggleButton value="yearly">Yearly</ToggleButton>
+                                    </ToggleButtonGroup>
+                                    
+                                    <Stack spacing={2}>
+                                        <LocalizationProvider dateAdapter={AdapterDateFns}>
+                                            <DatePicker
+                                                label="Start Date"
+                                                value={startDate}
+                                                onChange={(newValue) => {
+                                                    if (newValue) {
+                                                        setStartDate(newValue);
+                                                        setReportGenerated(false);
+                                                    }
+                                                }}
+                                                slotProps={{ textField: { size: 'small', fullWidth: true } }}
+                                            />
+                                            <DatePicker
+                                                label="End Date"
+                                                value={endDate}
+                                                onChange={(newValue) => {
+                                                    if (newValue) {
+                                                        setEndDate(newValue);
+                                                        setReportGenerated(false);
+                                                    }
+                                                }}
+                                                slotProps={{ textField: { size: 'small', fullWidth: true } }}
+                                            />
+                                        </LocalizationProvider>
+                                    </Stack>
+                                    
                                     <Button
                                         variant="contained"
                                         color="primary"
+                                        fullWidth
                                         sx={{ mt: 2 }}
                                         onClick={handleGenerateReport}
                                         disabled={loading}
                                     >
                                         {loading ? 'Generating...' : 'Generate Report'}
                                     </Button>
-                                </Box>
-                            ) : (
-                                <>
-                                    <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 3 }}>
-                                        <Box>
-                                            <Typography variant="h5" gutterBottom>
-                                                {reportInfo.title}
+                                </Paper>
+                            </Grid>
+                            
+                            {/* Report Content */}
+                            <Grid item xs={12} md={9}>
+                                <Paper sx={{ p: 3 }}>
+                                    {!reportGenerated ? (
+                                        <Box sx={{ 
+                                            display: 'flex', 
+                                            flexDirection: 'column', 
+                                            alignItems: 'center', 
+                                            justifyContent: 'center',
+                                            minHeight: 400
+                                        }}>
+                                            <ReportIcon sx={{ fontSize: 60, color: 'text.secondary', mb: 2 }} />
+                                            <Typography variant="h6" color="text.secondary" gutterBottom>
+                                                No Report Generated
                                             </Typography>
-                                            <Typography variant="body2" color="text.secondary">
-                                                {format(startDate, 'MMMM d, yyyy')} - {format(endDate, 'MMMM d, yyyy')}
+                                            <Typography variant="body2" color="text.secondary" align="center">
+                                                Select your report parameters and click "Generate Report" to view your financial data.
                                             </Typography>
+                                            <Button
+                                                variant="contained"
+                                                color="primary"
+                                                sx={{ mt: 2 }}
+                                                onClick={handleGenerateReport}
+                                                disabled={loading}
+                                            >
+                                                {loading ? 'Generating...' : 'Generate Report'}
+                                            </Button>
                                         </Box>
-                                        <Box>
-                                            <ButtonGroup variant="outlined" size="small">
-                                                <Button startIcon={<PrintIcon />}>Print</Button>
-                                                <Button startIcon={<DownloadIcon />}>PDF</Button>
-                                                <Button startIcon={<ShareIcon />}>Share</Button>
-                                            </ButtonGroup>
-                                        </Box>
-                                    </Box>
-                                    
-                                    {/* Financial Metrics */}
-                                    <Grid container spacing={2} sx={{ mb: 3 }}>
-                                        {financialMetrics.map((metric) => (
-                                            <Grid item xs={6} sm={3} key={metric.name}>
-                                                <Card>
-                                                    <CardContent sx={{ py: 1.5, px: 2, '&:last-child': { pb: 1.5 } }}>
-                                                        <Typography variant="body2" color="text.secondary">
-                                                            {metric.name}
-                                                        </Typography>
-                                                        <Typography variant="h6" sx={{ fontWeight: 'medium', my: 0.5 }}>
-                                                            {metric.isPercentage 
-                                                                ? `${metric.value.toFixed(1)}%` 
-                                                                : formatCurrency(metric.value)
-                                                            }
-                                                        </Typography>
-                                                        <Typography 
-                                                            variant="body2" 
-                                                            sx={{ 
-                                                                color: metric.isPositive 
-                                                                    ? 'success.main' 
-                                                                    : 'error.main',
-                                                                display: 'flex',
-                                                                alignItems: 'center'
-                                                            }}
-                                                        >
-                                                            {metric.isPositive ? '↑' : '↓'} {metric.change}%
-                                                        </Typography>
-                                                    </CardContent>
-                                                </Card>
+                                    ) : (
+                                        <>
+                                            <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 3 }}>
+                                                <Box>
+                                                    <Typography variant="h5" gutterBottom>
+                                                        {reportInfo.title}
+                                                    </Typography>
+                                                    <Typography variant="body2" color="text.secondary">
+                                                        {format(startDate, 'MMMM d, yyyy')} - {format(endDate, 'MMMM d, yyyy')}
+                                                    </Typography>
+                                                </Box>
+                                                <Box>
+                                                    <ButtonGroup variant="outlined" size="small">
+                                                        <Button startIcon={<PrintIcon />}>Print</Button>
+                                                        <Button startIcon={<DownloadIcon />}>PDF</Button>
+                                                        <Button startIcon={<ShareIcon />}>Share</Button>
+                                                    </ButtonGroup>
+                                                </Box>
+                                            </Box>
+                                            
+                                            {/* Financial Metrics */}
+                                            <Grid container spacing={2} sx={{ mb: 3 }}>
+                                                {financialMetrics.map((metric) => (
+                                                    <Grid item xs={6} sm={3} key={metric.name}>
+                                                        <Card>
+                                                            <CardContent sx={{ py: 1.5, px: 2, '&:last-child': { pb: 1.5 } }}>
+                                                                <Typography variant="body2" color="text.secondary">
+                                                                    {metric.name}
+                                                                </Typography>
+                                                                <Typography variant="h6" sx={{ fontWeight: 'medium', my: 0.5 }}>
+                                                                    {metric.isPercentage 
+                                                                        ? `${metric.value.toFixed(1)}%` 
+                                                                        : formatCurrency(metric.value)
+                                                                    }
+                                                                </Typography>
+                                                                <Typography 
+                                                                    variant="body2" 
+                                                                    sx={{ 
+                                                                        color: metric.isPositive 
+                                                                            ? 'success.main' 
+                                                                            : 'error.main',
+                                                                        display: 'flex',
+                                                                        alignItems: 'center'
+                                                                    }}
+                                                                >
+                                                                    {metric.isPositive ? '↑' : '↓'} {metric.change}%
+                                                                </Typography>
+                                                            </CardContent>
+                                                        </Card>
+                                                    </Grid>
+                                                ))}
                                             </Grid>
-                                        ))}
-                                    </Grid>
-                                    
-                                    {/* Chart Controls */}
-                                    <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 2 }}>
-                                        <Typography variant="subtitle1">
-                                            {reportInfo.description}
-                                        </Typography>
-                                        {/* Chart Type Selector */}
-                                        {(selectedReportType === 'income-expense' || selectedReportType === 'cash-flow') && (
-                                            <ToggleButtonGroup
-                                                value={chartType}
-                                                exclusive
-                                                onChange={handleChartTypeChange}
-                                                size="small"
-                                            >
-                                                <ToggleButton value="bar">
-                                                    <Tooltip title="Bar Chart">
-                                                        <BarChartIcon fontSize="small" />
-                                                    </Tooltip>
-                                                </ToggleButton>
-                                                <ToggleButton value="line">
-                                                    <Tooltip title="Line Chart">
-                                                        <LineChartIcon fontSize="small" />
-                                                    </Tooltip>
-                                                </ToggleButton>
-                                            </ToggleButtonGroup>
-                                        )}
-                                        {selectedReportType === 'expense-breakdown' && (
-                                            <ToggleButtonGroup
-                                                value={chartType}
-                                                exclusive
-                                                onChange={handleChartTypeChange}
-                                                size="small"
-                                            >
-                                                <ToggleButton value="pie">
-                                                    <Tooltip title="Pie Chart">
-                                                        <PieChartIcon fontSize="small" />
-                                                    </Tooltip>
-                                                </ToggleButton>
-                                                <ToggleButton value="doughnut">
-                                                    <Tooltip title="Doughnut Chart">
-                                                        <PieChartIcon fontSize="small" />
-                                                    </Tooltip>
-                                                </ToggleButton>
-                                                <ToggleButton value="bar">
-                                                    <Tooltip title="Bar Chart">
-                                                        <BarChartIcon fontSize="small" />
-                                                    </Tooltip>
-                                                </ToggleButton>
-                                            </ToggleButtonGroup>
-                                        )}
-                                    </Box>
-                                    
-                                    {/* Chart */}
-                                    <Box sx={{ height: 400, width: '100%' }}>
-                                        {renderChart()}
-                                    </Box>
-                                </>
-                            )}
+                                            
+                                            {/* Chart Controls */}
+                                            <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 2 }}>
+                                                <Typography variant="subtitle1">
+                                                    {reportInfo.description}
+                                                </Typography>
+                                                {/* Chart Type Selector */}
+                                                {(selectedReportType === 'income-expense' || selectedReportType === 'cash-flow') && (
+                                                    <ToggleButtonGroup
+                                                        value={chartType}
+                                                        exclusive
+                                                        onChange={handleChartTypeChange}
+                                                        size="small"
+                                                    >
+                                                        <ToggleButton value="bar">
+                                                            <Tooltip title="Bar Chart">
+                                                                <BarChartIcon fontSize="small" />
+                                                            </Tooltip>
+                                                        </ToggleButton>
+                                                        <ToggleButton value="line">
+                                                            <Tooltip title="Line Chart">
+                                                                <LineChartIcon fontSize="small" />
+                                                            </Tooltip>
+                                                        </ToggleButton>
+                                                    </ToggleButtonGroup>
+                                                )}
+                                                {selectedReportType === 'expense-breakdown' && (
+                                                    <ToggleButtonGroup
+                                                        value={chartType}
+                                                        exclusive
+                                                        onChange={handleChartTypeChange}
+                                                        size="small"
+                                                    >
+                                                        <ToggleButton value="pie">
+                                                            <Tooltip title="Pie Chart">
+                                                                <PieChartIcon fontSize="small" />
+                                                            </Tooltip>
+                                                        </ToggleButton>
+                                                        <ToggleButton value="doughnut">
+                                                            <Tooltip title="Doughnut Chart">
+                                                                <PieChartIcon fontSize="small" />
+                                                            </Tooltip>
+                                                        </ToggleButton>
+                                                        <ToggleButton value="bar">
+                                                            <Tooltip title="Bar Chart">
+                                                                <BarChartIcon fontSize="small" />
+                                                            </Tooltip>
+                                                        </ToggleButton>
+                                                    </ToggleButtonGroup>
+                                                )}
+                                            </Box>
+                                            
+                                            {/* Chart */}
+                                            <Box sx={{ height: 400, width: '100%' }}>
+                                                {renderChart()}
+                                            </Box>
+                                        </>
+                                    )}
+                                </Paper>
+                            </Grid>
+                        </Grid>
+                    </TabPanel>
+                    
+                    {/* Custom Reports */}
+                    <TabPanel value={tabValue} index={1}>
+                        <Paper sx={{ p: 4 }}>
+                            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', py: 5 }}>
+                                <SettingsIcon sx={{ fontSize: 60, color: 'text.secondary', mb: 2 }} />
+                                <Typography variant="h5" gutterBottom>
+                                    Custom Report Builder
+                                </Typography>
+                                <Typography variant="body1" color="text.secondary" align="center" sx={{ maxWidth: 600, mb: 3 }}>
+                                    Create your own custom reports by selecting specific data points, metrics, and visualizations that matter most to your business.
+                                </Typography>
+                                <Button variant="contained" color="primary">
+                                    Create Custom Report
+                                </Button>
+                            </Box>
                         </Paper>
-                    </Grid>
-                </Grid>
-            </TabPanel>
-            
-            {/* Custom Reports */}
-            <TabPanel value={tabValue} index={1}>
-                <Paper sx={{ p: 4 }}>
-                    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', py: 5 }}>
-                        <SettingsIcon sx={{ fontSize: 60, color: 'text.secondary', mb: 2 }} />
-                        <Typography variant="h5" gutterBottom>
-                            Custom Report Builder
-                        </Typography>
-                        <Typography variant="body1" color="text.secondary" align="center" sx={{ maxWidth: 600, mb: 3 }}>
-                            Create your own custom reports by selecting specific data points, metrics, and visualizations that matter most to your business.
-                        </Typography>
-                        <Button variant="contained" color="primary">
-                            Create Custom Report
-                        </Button>
-                    </Box>
-                </Paper>
-            </TabPanel>
-            
-            {/* Saved Reports */}
-            <TabPanel value={tabValue} index={2}>
-                <Paper sx={{ p: 4 }}>
-                    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', py: 5 }}>
-                        <ReportIcon sx={{ fontSize: 60, color: 'text.secondary', mb: 2 }} />
-                        <Typography variant="h5" gutterBottom>
-                            No Saved Reports Yet
-                        </Typography>
-                        <Typography variant="body1" color="text.secondary" align="center" sx={{ maxWidth: 600, mb: 3 }}>
-                            You haven't saved any reports yet. Generate a report and click "Save Report" to access it quickly in the future.
-                        </Typography>
-                        <Button 
-                            variant="contained" 
-                            color="primary"
-                            onClick={() => setTabValue(0)}
-                        >
-                            Go to Reports
-                        </Button>
-                    </Box>
-                </Paper>
-            </TabPanel>
-        </Box>
+                    </TabPanel>
+                    
+                    {/* Saved Reports */}
+                    <TabPanel value={tabValue} index={2}>
+                        <Paper sx={{ p: 4 }}>
+                            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', py: 5 }}>
+                                <ReportIcon sx={{ fontSize: 60, color: 'text.secondary', mb: 2 }} />
+                                <Typography variant="h5" gutterBottom>
+                                    No Saved Reports Yet
+                                </Typography>
+                                <Typography variant="body1" color="text.secondary" align="center" sx={{ maxWidth: 600, mb: 3 }}>
+                                    You haven't saved any reports yet. Generate a report and click "Save Report" to access it quickly in the future.
+                                </Typography>
+                                <Button 
+                                    variant="contained" 
+                                    color="primary"
+                                    onClick={() => setTabValue(0)}
+                                >
+                                    Go to Reports
+                                </Button>
+                            </Box>
+                        </Paper>
+                    </TabPanel>
+                </Box>
+            </Container>
+        </Layout>
     );
 };
 
